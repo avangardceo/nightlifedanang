@@ -401,6 +401,8 @@ html[lang="ko"] .business-visual .qt span,html[lang="zh"] .business-visual .qt s
 
 /* ============ ABOUT ============ */
 .about{padding:120px 0}
+.about-logo{display:flex;align-items:center;justify-content:center}
+.about-logo img{max-width:min(420px,100%);height:auto;filter:drop-shadow(0 10px 40px rgba(176,106,230,.25))}
 .about-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center}
 .about h2{font-size:clamp(2.4rem,5vw,3.8rem);margin-bottom:22px}
 .about p{color:var(--text-muted);margin-bottom:18px;font-size:1.05rem}
@@ -732,11 +734,11 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
     <h2 class="section-title reveal" data-i18n="gal_title">Gallery</h2>
     <p class="section-intro reveal" data-i18n="gal_intro">A glimpse of the rooms and venues we work with across Da Nang.</p>
     <div class="gallery-grid">
-      <div class="g tall reveal"><img src="media/gallery-sala-gold-1.jpg" alt="Luxury gold private karaoke room at a Da Nang partner venue" loading="lazy"></div>
-      <div class="g reveal"><img src="media/gallery-sala-neon.jpg" alt="Modern neon-lit VIP karaoke room in Da Nang" loading="lazy"></div>
       <div class="g tall reveal"><img src="media/gallery-corridoio.jpg" alt="Opulent corridor of a premium karaoke venue in Da Nang" loading="lazy"></div>
-      <div class="g reveal"><img src="media/gallery-sala-gold-2.jpg" alt="Elegant golden karaoke lounge with chandelier in Da Nang" loading="lazy"></div>
-      <div class="g reveal"><img src="media/hero-vip-poster.jpg" alt="Private VIP karaoke lounge with neon lighting in Da Nang" loading="lazy"></div>
+      <div class="g reveal"><img src="media/gallery-sala-gold-1.jpg" alt="Luxury gold private karaoke lounge in Da Nang" loading="lazy"></div>
+      <div class="g tall reveal"><img src="media/gallery-gruppo-1.jpg" alt="Friends singing and celebrating in a Da Nang karaoke room" loading="lazy"></div>
+      <div class="g reveal"><img src="media/gallery-sala-gold-2.jpg" alt="Elegant golden karaoke room with chandelier in Da Nang" loading="lazy"></div>
+      <div class="g reveal"><img src="media/gallery-gruppo-2.jpg" alt="Group enjoying a night of karaoke and drinks in Da Nang" loading="lazy"></div>
     </div>
     <p class="gallery-note reveal" data-i18n="gal_note">Every venue is hand-picked. Tell us your vibe and we'll match you to the perfect room.</p>
   </div>
@@ -756,8 +758,8 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
         <div class="stat"><div class="n">100%</div><div class="l" data-i18n="ab_s3">Tailor-made</div></div>
       </div>
     </div>
-    <div class="business-visual reveal">
-      <div class="qt"><span style="color:var(--primary)">✦</span><p data-i18n="ab_quote">Six years turning nights out into nights to remember.</p></div>
+    <div class="about-logo reveal">
+      <img src="media/logo-dragon.png" alt="Nightlife in Da Nang logo featuring the Dragon Bridge and city skyline" loading="lazy">
     </div>
   </div>
 </section>
@@ -894,16 +896,15 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
   </div>
 </footer>
 
-<!-- Kakao QR modal -->
-<div class="qr-modal" id="qrModal" role="dialog" aria-modal="true" aria-label="KakaoTalk QR">
+<!-- QR modal (KakaoTalk + LINE) -->
+<div class="qr-modal" id="qrModal" role="dialog" aria-modal="true" aria-label="QR code">
   <div class="qr-box">
     <button class="qr-close" id="qrClose" aria-label="Close">✕</button>
-    <span class="qr-ic"><svg viewBox="0 0 24 24"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.7-2.5.6.1 1.3.1 2 .1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg></span>
-    <h3 data-i18n="qr_title">Chat on KakaoTalk</h3>
-    <p data-i18n="qr_sub">Scan the QR code with your phone's camera or the KakaoTalk app.</p>
-    <img class="qr-img" src="media/kakao-qr.png" alt="KakaoTalk QR code to chat with Nightlife in Da Nang">
-    <div class="qr-name">Kenvin</div>
-    <div class="qr-hint" data-i18n="qr_hint">Nightlife in Da Nang</div>
+    <span class="qr-ic" id="qrIc"></span>
+    <h3 id="qrTitle">Scan to chat</h3>
+    <p id="qrSub" data-i18n="qr_sub">Scan the QR code with your phone's camera or the app.</p>
+    <img class="qr-img" id="qrImg" src="media/kakao-qr.png" alt="QR code to chat with Nightlife in Da Nang">
+    <div class="qr-name" id="qrName" data-i18n="qr_hint">Nightlife in Da Nang</div>
   </div>
 </div>
 
@@ -919,10 +920,10 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
 const CONFIG = {
   // Numero principale collegato a tutti i canali: +84 396677534
   whatsapp: "84396677534",        // WhatsApp: numero senza + e senza 0 iniziale
-  telegram: "84396677534",        // Telegram: meglio uno username (es. "nightlifedanang"); col numero funziona se è registrato
+  telegram: "",                   // Telegram: gestito via QR code (media/telegram-qr.png)
   kakao:    "",                   // KakaoTalk: ID canale (es. "_xytabc"). Vuoto = usa fallback numero
-  line:     "",                   // LINE: ID o codice (es. "@nightlifedanang"). Vuoto = usa fallback numero
-  wechat:   "84396677534",        // WeChat: ID WeChat (di norma serve un ID, non il numero). Vuoto = mostra QR/ID
+  line:     "",                   // LINE: gestito via QR code (media/line-qr.png)
+  wechat:   "",                   // WeChat: gestito via QR code (media/wechat-qr.png)
   phone:    "84396677534",        // numero per chiamate/SMS dirette
   email:    "hello@nightlifeindanang.com",
 };
@@ -931,22 +932,41 @@ const CONFIG = {
 const waText = encodeURIComponent("Hi! I'd like to plan a night in Da Nang.");
 function buildLinks(){
   const wa = "https://wa.me/"+CONFIG.whatsapp+"?text="+waText;
-  const tg = CONFIG.telegram ? "https://t.me/"+CONFIG.telegram : "#";
   const kk = CONFIG.kakao ? "https://pf.kakao.com/"+CONFIG.kakao : "#";
-  const line = CONFIG.line ? "https://line.me/R/ti/p/"+encodeURIComponent(CONFIG.line)
-                           : "https://line.me/ti/p/~"+CONFIG.phone; // fallback ricerca per numero
-  const wc = CONFIG.wechat ? "weixin://dl/chat?"+CONFIG.wechat : "#";
   const mail = "mailto:"+CONFIG.email;
   ["heroWa","chWa","ftWa","fabWa"].forEach(id=>{const e=document.getElementById(id);if(e)e.href=wa;});
-  ["chTg","ftTg"].forEach(id=>{const e=document.getElementById(id);if(e)e.href=tg;});
   ["chKk","ftKk"].forEach(id=>{const e=document.getElementById(id);if(e)e.href=kk;});
-  ["chLine","ftLine"].forEach(id=>{const e=document.getElementById(id);if(e)e.href=line;});
-  ["chWc","ftWc"].forEach(id=>{const e=document.getElementById(id);if(e)e.href=wc;});
   ["chMail","ftMail"].forEach(id=>{const e=document.getElementById(id);if(e)e.href=mail;});
-  // KakaoTalk → apre il popup QR (Kakao non si collega tramite numero)
+  // KakaoTalk e LINE → aprono il popup QR (non si collegano tramite numero)
   const qrModal=document.getElementById('qrModal');
-  function openQR(e){e.preventDefault();qrModal.classList.add('open');}
-  ["chKk","ftKk"].forEach(id=>{const e=document.getElementById(id);if(e){e.href='#';e.addEventListener('click',openQR);}});
+  const ICONS={
+    kakao:'<svg viewBox="0 0 24 24" style="fill:#FAE100"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.7-2.5.6.1 1.3.1 2 .1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>',
+    line:'<svg viewBox="0 0 24 24" style="fill:#06C755"><path d="M12 2C6.48 2 2 5.69 2 10.23c0 4.07 3.56 7.48 8.37 8.12.33.07.77.22.88.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1.01.89.55 1.09-.46 5.86-3.45 8-5.91 1.47-1.62 2.18-3.26 2.18-5.04C22.21 5.69 17.52 2 12 2z"/></svg>',
+    wechat:'<svg viewBox="0 0 24 24" style="fill:#07C160"><path d="M8.5 4C4.36 4 1 6.86 1 10.39c0 2.04 1.12 3.86 2.87 5.04l-.72 2.17 2.52-1.27c.9.25 1.85.39 2.83.39.24 0 .48-.01.71-.03a5.4 5.4 0 0 1-.22-1.51c0-3.18 3.09-5.76 6.9-5.76l.46.01C15.66 6.27 12.43 4 8.5 4zm11.79 14.58c0-2.96-2.96-5.37-6.3-5.37s-6.3 2.41-6.3 5.37c0 2.97 2.96 5.38 6.3 5.38.69 0 1.36-.1 1.98-.29l1.96.99-.54-1.65c1.4-.99 2.9-2.49 2.9-4.43z"/></svg>',
+    telegram:'<svg viewBox="0 0 24 24" style="fill:#2AABEE"><path d="M22 3 2 11l5 2 2 6 3-3 5 4 5-17zM9 14l9-7-7 8-2 4z"/></svg>'
+  };
+  const QR_DATA={
+    kakao:{ic:ICONS.kakao,bg:'rgba(255,235,0,.16)',title:{en:'Chat on KakaoTalk',vi:'Trò chuyện trên KakaoTalk',ko:'카카오톡으로 채팅',ja:'KakaoTalkでチャット',zh:'通过KakaoTalk聊天'},img:'media/kakao-qr.png'},
+    line:{ic:ICONS.line,bg:'rgba(6,199,85,.16)',title:{en:'Chat on LINE',vi:'Trò chuyện trên LINE',ko:'라인으로 채팅',ja:'LINEでチャット',zh:'通过LINE聊天'},img:'media/line-qr.png'},
+    wechat:{ic:ICONS.wechat,bg:'rgba(7,193,96,.16)',title:{en:'Chat on WeChat',vi:'Trò chuyện trên WeChat',ko:'위챗으로 채팅',ja:'WeChatでチャット',zh:'通过微信聊天'},img:'media/wechat-qr.png'},
+    telegram:{ic:ICONS.telegram,bg:'rgba(42,171,238,.16)',title:{en:'Chat on Telegram',vi:'Trò chuyện trên Telegram',ko:'텔레그램으로 채팅',ja:'Telegramでチャット',zh:'通过Telegram聊天'},img:'media/telegram-qr.png'}
+  };
+  function openQR(kind){
+    return function(e){
+      e.preventDefault();
+      const d=QR_DATA[kind];
+      const lang=document.documentElement.lang||'en';
+      document.getElementById('qrIc').innerHTML=d.ic;
+      document.getElementById('qrIc').style.background=d.bg;
+      document.getElementById('qrTitle').textContent=d.title[lang]||d.title.en;
+      document.getElementById('qrImg').src=d.img;
+      qrModal.classList.add('open');
+    };
+  }
+  ["chKk","ftKk"].forEach(id=>{const e=document.getElementById(id);if(e){e.href='#';e.addEventListener('click',openQR('kakao'));}});
+  ["chTg","ftTg"].forEach(id=>{const e=document.getElementById(id);if(e){e.href='#';e.addEventListener('click',openQR('telegram'));}});
+  ["chLine","ftLine"].forEach(id=>{const e=document.getElementById(id);if(e){e.href='#';e.addEventListener('click',openQR('line'));}});
+  ["chWc","ftWc"].forEach(id=>{const e=document.getElementById(id);if(e){e.href='#';e.addEventListener('click',openQR('wechat'));}});
   const qrClose=document.getElementById('qrClose');
   if(qrClose) qrClose.addEventListener('click',()=>qrModal.classList.remove('open'));
   qrModal.addEventListener('click',(ev)=>{if(ev.target===qrModal)qrModal.classList.remove('open');});
