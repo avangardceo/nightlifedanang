@@ -378,10 +378,10 @@ html[lang="ko"] .review .ravatar,html[lang="zh"] .review .ravatar,html[lang="vi"
 .business li::before{content:'✦';color:var(--accent);flex-shrink:0}
 .business-visual{
   aspect-ratio:4/5;border-radius:6px;
-  background:linear-gradient(145deg,var(--surface-2),var(--bg));
   border:1px solid var(--line);position:relative;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
 }
+.business-visual img{width:100%;height:100%;object-fit:cover}
 .business-visual .qt{padding:50px;text-align:center}
 .business-visual .qt span{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--accent);display:block;margin-bottom:14px}
 html[lang="ko"] .business-visual .qt span,html[lang="zh"] .business-visual .qt span,html[lang="vi"] .business-visual .qt span,html[lang="ja"] .business-visual .qt span{font-family:inherit;font-weight:600}
@@ -719,10 +719,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
       <a href="#contact" class="btn btn-gold" data-i18n="biz_cta">Inquire Privately</a>
     </div>
     <div class="business-visual reveal">
-      <div class="qt">
-        <span>“</span>
-        <p data-i18n="biz_quote">Discretion, reliability, and a night your guests remember for the right reasons.</p>
-      </div>
+      <img src="media/business.jpg" alt="Business guests enjoying a private VIP karaoke evening in Da Nang" loading="lazy">
     </div>
   </div>
 </section>
@@ -920,7 +917,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
 const CONFIG = {
   // Numero principale collegato a tutti i canali: +84 396677534
   whatsapp: "84396677534",        // WhatsApp: numero senza + e senza 0 iniziale
-  telegram: "",                   // Telegram: gestito via QR code (media/telegram-qr.png)
+  telegram: "NliDN",              // Telegram: username (link diretto t.me/NliDN)
   kakao:    "",                   // KakaoTalk: ID canale (es. "_xytabc"). Vuoto = usa fallback numero
   line:     "",                   // LINE: gestito via QR code (media/line-qr.png)
   wechat:   "",                   // WeChat: gestito via QR code (media/wechat-qr.png)
@@ -935,9 +932,11 @@ const CONFIG = {
 const waText = encodeURIComponent("Hi! I'd like to plan a night in Da Nang.");
 function buildLinks(){
   const wa = "https://wa.me/"+CONFIG.whatsapp+"?text="+waText;
+  const tg = CONFIG.telegram ? "https://t.me/"+CONFIG.telegram : "#";
   const kk = CONFIG.kakao ? "https://pf.kakao.com/"+CONFIG.kakao : "#";
   const mail = "mailto:"+CONFIG.email;
   ["heroWa","chWa","ftWa","fabWa"].forEach(id=>{const e=document.getElementById(id);if(e)e.href=wa;});
+  ["chTg","ftTg"].forEach(id=>{const e=document.getElementById(id);if(e)e.href=tg;});
   ["chKk","ftKk"].forEach(id=>{const e=document.getElementById(id);if(e)e.href=kk;});
   ["chMail","ftMail"].forEach(id=>{const e=document.getElementById(id);if(e)e.href=mail;});
   // KakaoTalk e LINE → aprono il popup QR (non si collegano tramite numero)
@@ -967,7 +966,6 @@ function buildLinks(){
     };
   }
   ["chKk","ftKk"].forEach(id=>{const e=document.getElementById(id);if(e){e.href='#';e.addEventListener('click',openQR('kakao'));}});
-  ["chTg","ftTg"].forEach(id=>{const e=document.getElementById(id);if(e){e.href='#';e.addEventListener('click',openQR('telegram'));}});
   ["chLine","ftLine"].forEach(id=>{const e=document.getElementById(id);if(e){e.href='#';e.addEventListener('click',openQR('line'));}});
   ["chWc","ftWc"].forEach(id=>{const e=document.getElementById(id);if(e){e.href='#';e.addEventListener('click',openQR('wechat'));}});
   const qrClose=document.getElementById('qrClose');
