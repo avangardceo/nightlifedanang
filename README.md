@@ -52,7 +52,6 @@ nightlife-danang/
 ---
 
 ## ⚙️ Personalizzazione — DA FARE PRIMA DEL LANCIO
-
 Apri `index.html` e cerca il blocco `CONFIG` (vicino alla fine, nello `<script>`).
 Inserisci i dati reali:
 
@@ -75,13 +74,30 @@ Cerca poi i commenti `TODO` nel file per gli altri segnaposti:
 
 ---
 
+## 📨 Attivare il form (ricevere le richieste via email)
+
+Il form "Request Your Night" è già collegato a **Web3Forms** (gratuito).
+Per ricevere i risultati nella tua casella email:
+
+1. Vai su **https://web3forms.com**
+2. Inserisci la tua email reale → ricevi una **Access Key** (gratis, 1 minuto)
+3. In `index.html`, nel blocco `CONFIG`, sostituisci:
+   `web3forms_key: "INSERISCI-LA-TUA-ACCESS-KEY-QUI",` con la chiave ricevuta.
+4. Fatto! Ogni richiesta dal form ti arriverà via email con tutti i dettagli
+   (nome, data, gruppo, tipo di serata, canale preferito, contatto, lingua).
+
+> Piano gratuito: 250 invii/mese. Se in futuro vorrai una dashboard vera (tabella
+> con stato e filtri), si potrà migrare senza rifare il sito.
+
+---
+
 ## Caratteristiche
 
 - **5 lingue**: Inglese, Vietnamita, Coreano, Giapponese, Cinese
   (rilevamento automatico della lingua del browser, fallback su Inglese)
 - **Video hero** a tutta altezza (muto, in loop)
-- **6 canali di contatto**: WhatsApp, Telegram, KakaoTalk (QR), LINE, WeChat, Email
-- **Form di richiesta** intelligente (predisposto per una futura dashboard)
+- **6 canali di contatto**: WhatsApp, Telegram (QR), KakaoTalk (QR), LINE (QR), WeChat (QR), Email
+- **Form di richiesta** collegato a Web3Forms (richieste via email)
 - **Gallery** con foto reali dei locali partner
 - **Recensioni** multilingua + trust badge
 - Completamente **responsive** (desktop, tablet, mobile)
@@ -92,10 +108,9 @@ Cerca poi i commenti `TODO` nel file per gli altri segnaposti:
 ## Note tecniche
 
 - Sito statico: nessun server richiesto, gira ovunque (GitHub Pages, Netlify, hosting classico).
-- Nessuna dipendenza esterna se non i Google Fonts (caricati via CDN).
-- Il form, allo stato attuale, mostra una conferma e (se l'utente sceglie WhatsApp)
-  apre la chat con il riepilogo. Per raccogliere le richieste in una dashboard,
-  collegare un backend nel punto segnato `TODO BACKEND` nel codice.
+- Nessuna dipendenza esterna se non i Google Fonts e Web3Forms (entrambi via CDN/API).
+- Il form invia le richieste via Web3Forms; se l'utente sceglie WhatsApp come canale,
+  apre anche la chat col riepilogo precompilato.
 
 ---
 

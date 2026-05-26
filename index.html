@@ -926,6 +926,9 @@ const CONFIG = {
   wechat:   "",                   // WeChat: gestito via QR code (media/wechat-qr.png)
   phone:    "84396677534",        // numero per chiamate/SMS dirette
   email:    "hello@nightlifeindanang.com",
+  // Web3Forms: chiave gratuita per ricevere le richieste del form via email.
+  // Ottienila in 1 minuto su https://web3forms.com (inserisci la tua email → ti arriva la access key)
+  web3forms_key: "d2da474e-576b-4bf9-a8da-67fd8de48ed4",
 };
 
 /* link canali (con messaggio precompilato) */
@@ -1005,33 +1008,57 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
    sostituisci la sezione "TODO BACKEND" con una fetch POST.
    ========================================================= */
 const form = document.getElementById('leadForm');
-form.addEventListener('submit',(e)=>{
+form.addEventListener('submit',async (e)=>{
   e.preventDefault();
   const data = Object.fromEntries(new FormData(form).entries());
-  data.timestamp = new Date().toISOString();
   data.lang = document.documentElement.lang;
 
-  /* ---- TODO BACKEND: invia 'data' al tuo endpoint / dashboard ----
-     fetch('/api/leads', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-     ---------------------------------------------------------------- */
+  const btn = form.querySelector('button[type="submit"]');
+  const btnText = btn.textContent;
+  btn.disabled = true; btn.textContent = '…';
 
-  // Demo: log in console così vedi la struttura del dato che la dashboard riceverà
-  console.log('LEAD →', data);
+  // Costruisce il payload per Web3Forms
+  const payload = {
+    access_key: CONFIG.web3forms_key,
+    subject: "🌙 New request — Nightlife in Da Nang",
+    from_name: "Nightlife in Da Nang website",
+    name: data.name,
+    "Group size": data.people,
+    "Preferred date": data.date || "-",
+    "Type of night": data.type,
+    "Preferred channel": data.channel,
+    "Contact": data.contact,
+    "Message": data.message || "-",
+    "Language": data.lang
+  };
 
-  // Mostra conferma + offre invio rapido su WhatsApp con i dati precompilati
-  const msg = encodeURIComponent(
-    "New request — Nightlife in Da Nang\n"+
-    "Name: "+data.name+"\nGroup: "+data.people+"\nDate: "+(data.date||"-")+
-    "\nType: "+data.type+"\nContact ("+data.channel+"): "+data.contact+
-    (data.message?("\nNote: "+data.message):"")
-  );
-  // se l'utente preferisce WhatsApp lo mandiamo lì col riepilogo, altrimenti solo conferma
-  if(data.channel==='WhatsApp'){
-    window.open("https://wa.me/"+CONFIG.whatsapp+"?text="+msg,"_blank");
+  try{
+    const res = await fetch("https://api.web3forms.com/submit",{
+      method:"POST",
+      headers:{"Content-Type":"application/json", "Accept":"application/json"},
+      body: JSON.stringify(payload)
+    });
+    const out = await res.json();
+    if(out.success){
+      form.reset();
+      document.getElementById('formSuccess').classList.add('show');
+      setTimeout(()=>document.getElementById('formSuccess').classList.remove('show'),6000);
+      // comodità: se l'utente preferisce WhatsApp, apre la chat col riepilogo
+      if(data.channel==='WhatsApp' && CONFIG.whatsapp){
+        const msg = encodeURIComponent(
+          "Hi! I'd like to plan a night in Da Nang.\n"+
+          "Name: "+data.name+" · Group: "+data.people+" · Date: "+(data.date||"-")+" · "+data.type
+        );
+        window.open("https://wa.me/"+CONFIG.whatsapp+"?text="+msg,"_blank");
+      }
+    } else {
+      alert("Sorry, something went wrong. Please contact us directly via WhatsApp.");
+    }
+  } catch(err){
+    alert("Network error. Please contact us directly via WhatsApp.");
+  } finally {
+    btn.disabled = false; btn.textContent = btnText;
   }
-  form.reset();
-  document.getElementById('formSuccess').classList.add('show');
-  setTimeout(()=>document.getElementById('formSuccess').classList.remove('show'),6000);
 });
 
 /* =========================================================
