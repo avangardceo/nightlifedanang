@@ -308,6 +308,13 @@ html[lang="ko"] .step .num,html[lang="zh"] .step .num,html[lang="vi"] .step .num
 .step p{color:var(--text-muted);font-size:.9rem}
 .included{margin-top:54px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
 .chip{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border:1px solid var(--line);border-radius:40px;font-size:.86rem;color:var(--text)}
+.price-banner{margin:40px auto 0;max-width:620px;text-align:center;padding:30px 34px;border-radius:10px;
+  background:linear-gradient(135deg,rgba(176,106,230,.1),rgba(240,192,64,.08));
+  border:1px solid var(--line);box-shadow:0 0 30px rgba(176,106,230,.12)}
+.price-from{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;letter-spacing:.03em;color:var(--text);margin-bottom:8px}
+.price-from b{color:var(--accent);font-size:3rem}
+html[lang="ko"] .price-from,html[lang="zh"] .price-from,html[lang="vi"] .price-from,html[lang="ja"] .price-from{font-family:'Bebas Neue',sans-serif}
+.price-banner p{color:var(--text-muted);font-size:.95rem;margin:0}
 .chip b{color:var(--accent);font-weight:500}
 
 /* ============ KAKAO QR MODAL ============ */
@@ -416,6 +423,12 @@ html[lang="ko"] .stat .n,html[lang="zh"] .stat .n,html[lang="vi"] .stat .n,html[
 .contact-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start}
 .contact h2{font-size:clamp(2.4rem,5vw,3.8rem);margin-bottom:20px}
 .contact-lead{color:var(--text-muted);margin-bottom:34px;font-size:1.05rem}
+.reply-badge{display:inline-flex;align-items:center;gap:10px;margin:-18px 0 30px;padding:10px 18px;
+  background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3);border-radius:40px;
+  font-size:.9rem;color:#7be8a4;font-weight:500}
+.pulse-dot{width:9px;height:9px;border-radius:50%;background:#25D366;flex-shrink:0;
+  box-shadow:0 0 0 0 rgba(37,211,102,.6);animation:pulse-ring 1.8s infinite}
+@keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 8px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 .channels{display:flex;flex-direction:column;gap:12px;margin-bottom:10px}
 .channel{
   display:flex;align-items:center;gap:14px;padding:15px 20px;border-radius:6px;
@@ -447,6 +460,9 @@ html[lang="ko"] .stat .n,html[lang="zh"] .stat .n,html[lang="vi"] .stat .n,html[
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .lead-form .btn{width:100%;justify-content:center;margin-top:8px}
 .form-note{font-size:.78rem;color:var(--text-muted);margin-top:14px;text-align:center}
+.form-reassure{display:flex;align-items:center;justify-content:center;gap:8px;
+  font-size:.85rem;color:var(--accent);margin-bottom:16px;padding:11px 14px;
+  background:rgba(240,192,64,.08);border:1px solid rgba(240,192,64,.2);border-radius:6px;text-align:center}
 .form-success{
   display:none;padding:22px;border-radius:6px;background:rgba(37,211,102,.1);
   border:1px solid rgba(37,211,102,.3);color:#7be8a4;text-align:center;margin-top:16px;font-size:.92rem;
@@ -498,8 +514,18 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
 }
 @media(max-width:560px){
   .container{padding:0 18px}
+  /* compatta gli spazi morti verticali su mobile */
+  .audience,.formats,.how,.reviews,.business,.gallery,.about,.contact{padding:60px 0}
+  .hero-content{padding:96px 0 40px 0}
   .format-grid{grid-template-columns:1fr}
-  .how-grid{grid-template-columns:1fr 1fr}
+  .how-grid{grid-template-columns:1fr 1fr;gap:12px}
+  /* chip "included" in griglia a 2 colonne, compatta */
+  .included{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .included .chip{justify-content:center;padding:12px 10px;font-size:.8rem}
+  /* trust badge in griglia 2 colonne, compatta */
+  .trust-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:36px}
+  .trust-badge{padding:14px 12px;border-radius:14px;gap:8px}
+  .price-banner{margin-top:28px;padding:24px 20px}
   .review-grid{grid-template-columns:1fr}
   .field-row{grid-template-columns:1fr}
   .stats{gap:26px}
@@ -507,6 +533,8 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
   .hero-ctas{flex-direction:column;align-items:stretch}
   .hero-ctas .btn{justify-content:center}
   .lead-form{padding:26px 22px}
+  .section-title{margin-bottom:10px}
+  .section-intro{margin-bottom:32px}
 }
 </style>
 </head>
@@ -570,7 +598,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
         <a href="#contact" class="btn btn-primary" data-i18n="hero_cta1">Plan My Night</a>
         <a href="#business" class="btn btn-ghost" data-i18n="hero_cta2">Corporate & Private Events</a>
       </div>
-      <div class="hero-trust"><span class="seal">✦</span> <span data-i18n="hero_trust">100% selected venues · 6 years on the ground · 4.9/5 guest rating</span></div>
+      <div class="hero-trust"><span class="seal">✦</span> <span data-i18n="hero_trust">100% selected venues · 6 years on the ground · No upfront payment</span></div>
       <a href="#" class="hero-wa" id="heroWa">
         <svg viewBox="0 0 24 24" fill="#25D366"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.5-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.7.7-.9 1.7-.6 2.8a8 8 0 0 0 3.4 3.9c1.8 1 2.3.9 2.8.8.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1z"/></svg>
         <span data-i18n="hero_wa">Or message us directly</span>
@@ -645,6 +673,10 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
       <span class="chip reveal"><b>✓</b> <span data-i18n="inc4">Hostess welcome</span></span>
       <span class="chip reveal"><b>✓</b> <span data-i18n="inc5">Tailored to your group</span></span>
     </div>
+    <div class="price-banner reveal">
+      <div class="price-from"><span data-i18n="price_label">From</span> <b>$150</b> <span data-i18n="price_pp">per person</span></div>
+      <p data-i18n="price_desc">All inclusive — private VIP room, welcome drinks, 3 hours minimum and the venue's warm hospitality. No upfront payment.</p>
+    </div>
   </div>
 </section>
 
@@ -665,6 +697,10 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
       <div class="trust-badge">
         <span class="seal">🌙</span>
         <span class="tb-txt"><b>6</b><small data-i18n="rv_badge3">Years On The Ground</small></span>
+      </div>
+      <div class="trust-badge">
+        <span class="seal">💳</span>
+        <span class="tb-txt"><b data-i18n="rv_badge4_b">No</b><small data-i18n="rv_badge4">Upfront Payment</small></span>
       </div>
     </div>
     <!-- TODO: sostituire con recensioni reali dei clienti prima del lancio -->
@@ -767,7 +803,8 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
     <div class="reveal">
       <span class="eyebrow" data-i18n="ct_eyebrow">Plan Your Night</span>
       <h2 data-i18n="ct_title">Tell Us About Your Night</h2>
-      <p class="contact-lead" data-i18n="ct_lead">Send a few details and we'll get back to you fast — usually within hours. Prefer to chat? Reach us on any channel below.</p>
+      <p class="contact-lead" data-i18n="ct_lead">Send a few details and we'll get back to you fast — usually within minutes. Prefer to chat? Reach us on any channel below.</p>
+      <div class="reply-badge"><span class="pulse-dot"></span> <span data-i18n="ct_reply">We reply in minutes, ready to serve you.</span></div>
       <div class="channels">
         <a href="#" class="channel" id="chWa">
           <span class="ci wa"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.5-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.7.7-.9 1.7-.6 2.8a8 8 0 0 0 3.4 3.9c1.8 1 2.3.9 2.8.8.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1z"/></svg></span>
@@ -842,6 +879,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
           <label for="lf_msg" data-i18n="fm_msg">Anything else? (optional)</label>
           <textarea id="lf_msg" name="message" rows="2"></textarea>
         </div>
+        <div class="form-reassure"><span>💳</span> <span data-i18n="fm_reassure">No upfront payment — enquiring is free and with no obligation.</span></div>
         <button type="submit" class="btn btn-primary" data-i18n="fm_submit">Send Request</button>
         <p class="form-note" data-i18n="fm_note">By sending, you agree to be contacted about your request.</p>
       </form>
@@ -1066,8 +1104,8 @@ const I18N = {
   en:{}, // l'inglese è già nel markup (default)
   vi:{
     nav_formats:"Các buổi tối",nav_how:"Cách hoạt động",nav_reviews:"Đánh giá",nav_business:"Cho doanh nghiệp",nav_gallery:"Thư viện",nav_about:"Giới thiệu",nav_cta:"Lên kế hoạch",
-    hero_trust:"100% địa điểm chọn lọc · 6 năm kinh nghiệm · Đánh giá 4.9/5",
-    rv_eyebrow:"Khách hàng nói gì",rv_title:"Được khách hàng toàn cầu yêu thích",rv_badge1:"Địa điểm chọn lọc",rv_badge2:"Đánh giá khách",rv_badge3:"Năm hoạt động",rv_tourist:"Du khách",rv_business:"Khách doanh nghiệp",
+    hero_trust:"100% địa điểm chọn lọc · 6 năm kinh nghiệm · Không trả trước",
+    rv_eyebrow:"Khách hàng nói gì",rv_title:"Được khách hàng toàn cầu yêu thích",rv_badge1:"Địa điểm chọn lọc",rv_badge2:"Đánh giá khách",rv_badge3:"Năm hoạt động",rv_badge4:"Trả trước",rv_badge4_b:"Không",rv_tourist:"Du khách",rv_business:"Khách doanh nghiệp",
     hero_badge:"6 năm tại Đà Nẵng · Cho du khách & doanh nghiệp",
     hero_h1:"Những đêm khó quên tại Đà Nẵng",
     hero_sub:"Karaoke VIP, bàn riêng và bottle service tại những địa điểm tốt nhất thành phố — sắp xếp trọn gói, bạn chỉ việc tận hưởng.",
@@ -1086,26 +1124,26 @@ const I18N = {
     s2_h:"Chúng tôi lên kế hoạch",s2_p:"Đề xuất địa điểm, phòng và bàn phù hợp, xác nhận mọi chi tiết trước.",
     s3_h:"Bạn đến nơi",s3_p:"Phòng riêng đã sẵn sàng, đồ uống chào mừng và sự tiếp đón của địa điểm.",
     s4_h:"Bạn tận hưởng",s4_p:"Hát, nâng ly và thư giãn tối thiểu ba giờ. Chúng tôi luôn sẵn sàng cả đêm.",
-    inc1:"Phòng riêng",inc2:"Đồ uống chào mừng",inc3:"Tối thiểu 3 giờ",inc4:"Tiếp đón hostess",inc5:"Thiết kế riêng",
+    inc1:"Phòng riêng",inc2:"Đồ uống chào mừng",inc3:"Tối thiểu 3 giờ",inc4:"Tiếp đón hostess",inc5:"Thiết kế riêng",price_label:"Từ",price_pp:"mỗi người",price_desc:"Trọn gói — phòng VIP riêng, đồ uống chào mừng, tối thiểu 3 giờ và sự tiếp đón nồng hậu của địa điểm. Không trả trước.",
     biz_eyebrow:"Cho doanh nghiệp",biz_title:"Sự kiện doanh nghiệp & riêng tư",biz_p:"Khi bạn tiếp khách hàng, đối tác hay đoàn công tác, buổi tối phải hoàn hảo và hoàn toàn kín đáo. Chúng tôi đã làm điều đó tại Đà Nẵng suốt sáu năm.",
     biz_l1:"Hoàn toàn kín đáo và riêng tư từ đầu đến cuối",biz_l2:"Tổ chức từ A đến Z — địa điểm, bàn, đưa đón, thời gian",biz_l3:"Một đầu mối liên hệ, sẵn sàng suốt đêm",biz_l4:"Phù hợp đoàn công tác, tiếp khách và tối nhóm",
     biz_cta:"Liên hệ riêng",biz_quote:"Kín đáo, đáng tin và một buổi tối khách của bạn nhớ mãi.",
     gal_eyebrow:"Không khí",gal_title:"Thư viện",gal_intro:"Một thoáng về các phòng và địa điểm chúng tôi hợp tác tại Đà Nẵng.",gal_ph:"Ảnh — địa điểm đối tác",gal_note:"Mỗi địa điểm đều được tuyển chọn kỹ. Cho chúng tôi biết phong cách của bạn, chúng tôi sẽ tìm phòng phù hợp.",
     ab_eyebrow:"Chúng tôi là ai",ab_title:"Bản địa. Đáng tin. Tận nơi.",ab_p1:"Chúng tôi sống và làm việc tại Đà Nẵng, đã sáu năm xây dựng quan hệ thực sự với các địa điểm tốt nhất thành phố.",ab_p2:"Dù bạn là nhóm bạn đi nghỉ hay doanh nghiệp tiếp khách quan trọng, bạn có một đầu mối tin cậy hiểu Đà Nẵng về đêm.",
     ab_s1:"Năm tại Đà Nẵng",ab_s2:"Địa điểm đối tác",ab_s3:"Theo yêu cầu",ab_quote:"Sáu năm biến những đêm đi chơi thành những đêm khó quên.",
-    ct_eyebrow:"Lên kế hoạch",ct_title:"Kể cho chúng tôi về buổi tối của bạn",ct_lead:"Gửi vài chi tiết và chúng tôi sẽ phản hồi nhanh — thường trong vài giờ. Muốn nhắn tin? Liên hệ qua kênh bất kỳ.",
+    ct_eyebrow:"Lên kế hoạch",ct_title:"Kể cho chúng tôi về buổi tối của bạn",ct_lead:"Gửi vài chi tiết và chúng tôi sẽ phản hồi nhanh — thường trong vài phút. Muốn nhắn tin? Liên hệ qua kênh bất kỳ.",ct_reply:"Chúng tôi phản hồi trong vài phút, sẵn sàng phục vụ bạn.",
     ct_wa:"Phản hồi nhanh nhất · nhấn để nhắn",ct_tg:"Nhắn bất cứ lúc nào",ct_kk:"Cho khách Hàn Quốc",ct_line:"Phổ biến ở Nhật & Hàn",ct_wc:"Cho khách Trung Quốc",qr_title:"Trò chuyện trên KakaoTalk",qr_sub:"Quét mã QR bằng camera điện thoại hoặc ứng dụng KakaoTalk.",qr_hint:"Nightlife in Da Nang",ct_mail:"Cho yêu cầu doanh nghiệp",
     fm_title:"Yêu cầu buổi tối",fm_sub:"Không ràng buộc — chỉ cần cho chúng tôi biết ý tưởng.",fm_name:"Họ tên",fm_people:"Số người",fm_date:"Ngày mong muốn",fm_type:"Loại buổi tối?",
     fm_o1:"Karaoke VIP",fm_o2:"Bottle Service / Bàn",fm_o3:"Tối & Đêm",fm_o4:"Sự kiện doanh nghiệp / riêng",fm_o5:"Theo yêu cầu — tôi sẽ giải thích",
-    fm_channel:"Cách liên hệ tốt nhất",fm_contact:"Số / tài khoản / email của bạn",fm_msg:"Còn gì nữa không? (tùy chọn)",fm_submit:"Gửi yêu cầu",fm_note:"Khi gửi, bạn đồng ý được liên hệ về yêu cầu.",fm_success:"✓ Cảm ơn! Yêu cầu của bạn đã được ghi nhận. Chúng tôi sẽ liên hệ sớm.",
+    fm_channel:"Cách liên hệ tốt nhất",fm_contact:"Số / tài khoản / email của bạn",fm_msg:"Còn gì nữa không? (tùy chọn)",fm_submit:"Gửi yêu cầu",fm_note:"Khi gửi, bạn đồng ý được liên hệ về yêu cầu.",fm_reassure:"Không trả trước — yêu cầu miễn phí và không ràng buộc.",fm_success:"✓ Cảm ơn! Yêu cầu của bạn đã được ghi nhận. Chúng tôi sẽ liên hệ sớm.",
     ft_about:"Giải trí về đêm tại Đà Nẵng cho du khách và doanh nghiệp. Karaoke VIP, sự kiện riêng và bottle service tại những địa điểm tốt nhất.",
     ft_warn1:"🔞 Chỉ dành cho người trên 18 tuổi. Cần giấy tờ tùy thân hợp lệ.",ft_warn2:"Chúng tôi khuyến khích uống có trách nhiệm.",
     ft_explore:"Khám phá",ft_contact:"Liên hệ",ft_wa:"WhatsApp",ft_privacy:"Chính sách bảo mật",
   },
   ko:{
     nav_formats:"나이트",nav_how:"이용 방법",nav_reviews:"후기",nav_business:"기업 고객",nav_gallery:"갤러리",nav_about:"소개",nav_cta:"예약 문의",
-    hero_trust:"100% 엄선된 장소 · 현장 경력 6년 · 고객 평점 4.9/5",
-    rv_eyebrow:"고객 후기",rv_title:"전 세계 고객이 사랑하는 곳",rv_badge1:"엄선된 장소",rv_badge2:"고객 평점",rv_badge3:"현장 경력(년)",rv_tourist:"여행객",rv_business:"기업 고객",
+    hero_trust:"100% 엄선된 장소 · 현장 경력 6년 · 선결제 없음",
+    rv_eyebrow:"고객 후기",rv_title:"전 세계 고객이 사랑하는 곳",rv_badge1:"엄선된 장소",rv_badge2:"고객 평점",rv_badge3:"현장 경력(년)",rv_badge4:"선결제 없음",rv_badge4_b:"NO",rv_tourist:"여행객",rv_business:"기업 고객",
     hero_badge:"다낭 6년 경력 · 여행객 & 기업 대상",
     hero_h1:"다낭에서의 잊지 못할 밤",
     hero_sub:"도시 최고의 장소에서 VIP 노래방, 프라이빗 테이블, 보틀 서비스를 처음부터 끝까지 준비해 드립니다. 즐기기만 하세요.",
@@ -1124,18 +1162,18 @@ const I18N = {
     s2_h:"계획합니다",s2_p:"적합한 장소, 룸, 테이블을 제안하고 모든 세부 사항을 미리 확인합니다.",
     s3_h:"도착합니다",s3_p:"프라이빗 룸이 준비되고 웰컴 드링크가 따라지며 장소의 환대가 기다립니다.",
     s4_h:"즐깁니다",s4_p:"최소 3시간 동안 노래하고 건배하며 즐기세요. 밤새 연락 가능합니다.",
-    inc1:"프라이빗 룸",inc2:"웰컴 드링크",inc3:"최소 3시간",inc4:"호스티스 환대",inc5:"맞춤 구성",
+    inc1:"프라이빗 룸",inc2:"웰컴 드링크",inc3:"최소 3시간",inc4:"호스티스 환대",inc5:"맞춤 구성",price_label:"",price_pp:"1인 기준",price_desc:"올인클루시브 — 프라이빗 VIP룸, 웰컴 드링크, 최소 3시간, 그리고 장소의 따뜻한 환대. 선결제 없음.",
     biz_eyebrow:"기업 고객",biz_title:"기업 & 프라이빗 행사",biz_p:"고객, 파트너 또는 방문 대표단을 접대할 때 그 밤은 완벽하고 철저히 신중해야 합니다. 다낭에서 6년간 해온 일입니다.",
     biz_l1:"처음부터 끝까지 완벽한 비밀 보장과 프라이버시",biz_l2:"A부터 Z까지 준비 — 장소, 테이블, 이동, 시간",biz_l3:"밤새 연락 가능한 단일 연락처",biz_l4:"대표단, 고객 접대, 팀 나이트 맞춤",
     biz_cta:"개별 문의",biz_quote:"신중함, 신뢰, 그리고 손님이 좋은 의미로 기억하는 밤.",
     gal_eyebrow:"분위기",gal_title:"갤러리",gal_intro:"다낭 전역의 파트너 장소와 룸을 살짝 엿보세요.",gal_ph:"사진 — 파트너 장소",gal_note:"모든 장소는 엄선되었습니다. 원하시는 분위기를 알려주시면 완벽한 룸을 매칭해 드립니다.",
     ab_eyebrow:"우리는",ab_title:"현지. 신뢰. 현장.",ab_p1:"우리는 다낭에 살며 일하고, 6년간 도시 최고의 장소들과 진짜 관계를 쌓아왔습니다.",ab_p2:"휴가 중인 친구 모임이든 중요한 손님을 접대하는 기업이든, 밤의 다낭을 아는 신뢰할 수 있는 단일 연락처를 갖게 됩니다.",
     ab_s1:"다낭 경력(년)",ab_s2:"파트너 장소",ab_s3:"맞춤 제작",ab_quote:"6년간 평범한 밤을 잊지 못할 밤으로.",
-    ct_eyebrow:"밤 계획하기",ct_title:"당신의 밤을 알려주세요",ct_lead:"몇 가지 정보를 보내주시면 보통 몇 시간 내에 답변드립니다. 채팅을 원하시면 아래 채널로 연락하세요.",
+    ct_eyebrow:"밤 계획하기",ct_title:"당신의 밤을 알려주세요",ct_lead:"몇 가지 정보를 보내주시면 보통 몇 분 내에 답변드립니다. 채팅을 원하시면 아래 채널로 연락하세요.",ct_reply:"몇 분 내에 답변드리며, 언제든 도와드릴 준비가 되어 있습니다.",
     ct_wa:"가장 빠른 답변 · 탭하여 채팅",ct_tg:"언제든 메시지",ct_kk:"한국 고객용",ct_line:"일본·한국에서 인기",ct_wc:"중국 고객용",qr_title:"카카오톡으로 채팅",qr_sub:"휴대폰 카메라나 카카오톡 앱으로 QR 코드를 스캔하세요.",qr_hint:"Nightlife in Da Nang",ct_mail:"기업 문의용",
     fm_title:"밤 요청하기",fm_sub:"부담 없이 — 생각하시는 것을 알려주세요.",fm_name:"성함",fm_people:"인원수",fm_date:"희망 날짜",fm_type:"어떤 밤인가요?",
     fm_o1:"VIP 노래방",fm_o2:"보틀 서비스 / 테이블",fm_o3:"디너 & 나이트",fm_o4:"기업 / 프라이빗 행사",fm_o5:"맞춤 — 직접 설명",
-    fm_channel:"연락 받을 방법",fm_contact:"번호 / 아이디 / 이메일",fm_msg:"더 하실 말씀? (선택)",fm_submit:"요청 보내기",fm_note:"보내시면 요청 관련 연락에 동의하는 것입니다.",fm_success:"✓ 감사합니다! 요청이 접수되었습니다. 곧 연락드리겠습니다.",
+    fm_channel:"연락 받을 방법",fm_contact:"번호 / 아이디 / 이메일",fm_msg:"더 하실 말씀? (선택)",fm_submit:"요청 보내기",fm_note:"보내시면 요청 관련 연락에 동의하는 것입니다.",fm_reassure:"선결제 없음 — 문의는 무료이며 부담이 없습니다.",fm_success:"✓ 감사합니다! 요청이 접수되었습니다. 곧 연락드리겠습니다.",
     ft_about:"여행객과 기업을 위한 다낭 나이트라이프. 최고의 장소에서 VIP 노래방, 프라이빗 행사, 보틀 서비스.",
     ft_warn1:"🔞 만 18세 이상만. 모든 장소에서 신분증 필요.",ft_warn2:"책임 있는 음주를 권장합니다.",
     ft_explore:"둘러보기",ft_contact:"연락처",ft_wa:"WhatsApp",ft_privacy:"개인정보 처리방침",
@@ -1146,7 +1184,7 @@ const I18N = {
     hero_h1:"ダナンの忘れられない夜",
     hero_sub:"VIPカラオケ、プライベートテーブル、ボトルサービスを街最高の会場で。すべて手配いたしますので、あなたは夜を楽しむだけ。",
     hero_cta1:"ナイトを計画",hero_cta2:"法人・プライベートイベント",hero_wa:"または直接メッセージを",
-    hero_trust:"100%厳選された会場 · 現地で6年 · 評価4.9/5",
+    hero_trust:"100%厳選された会場 · 現地で6年 · 前払い不要",
     aud1_tag:"グループ・旅行者の方へ",aud1_h:"最高の夜を、確実に",aud1_p:"プライベートカラオケルーム、最高の席、提携会場の温かいおもてなし。夜のダナンを知り尽くしたスタッフがご案内します。",aud1_cta:"ナイトを見る →",
     aud2_tag:"企業・プライベートイベントの方へ",aud2_h:"慎重に。確実に。すべてお任せ。",aud2_p:"接待、視察団の夜、チームの集まり。完全な慎重さでAからZまで手配し、お客様はゲストに集中できます。",aud2_cta:"個別にお問い合わせ →",
     fmt_eyebrow:"手配いたします",fmt_title:"ナイト",fmt_intro:"すべての夜はあなたのために組み立てます。代表的なプランをご紹介。または、ご希望の雰囲気をお聞かせください。",
@@ -1161,27 +1199,27 @@ const I18N = {
     s2_h:"私たちが計画",s2_p:"最適な会場、ルーム、席をご提案し、すべての詳細を事前に確認します。",
     s3_h:"ご到着",s3_p:"プライベートルームが整い、ウェルカムドリンクが注がれ、会場のおもてなしがお迎えします。",
     s4_h:"お楽しみください",s4_p:"最低3時間、歌い、乾杯し、くつろいでください。一晩中いつでも対応可能です。",
-    inc1:"プライベートルーム",inc2:"ウェルカムドリンク",inc3:"最低3時間",inc4:"おもてなし",inc5:"オーダーメイド",
+    inc1:"プライベートルーム",inc2:"ウェルカムドリンク",inc3:"最低3時間",inc4:"おもてなし",inc5:"オーダーメイド",price_label:"",price_pp:"お一人様",price_desc:"オールインクルーシブ — プライベートVIPルーム、ウェルカムドリンク、最低3時間、そして会場の温かいおもてなし。前払い不要。",
     biz_eyebrow:"法人のお客様",biz_title:"法人・プライベートイベント",biz_p:"クライアント、パートナー、視察団をおもてなしする際、その夜は完璧で、かつ完全に慎重でなければなりません。ダナンで6年間、まさにそれを行ってきました。",
     biz_l1:"最初から最後まで完全な慎重さとプライバシー",biz_l2:"AからZまで手配 — 会場、席、送迎、タイミング",biz_l3:"一晩中連絡可能な単一の窓口",biz_l4:"視察団、接待、チームの夜に対応",
     biz_cta:"個別にお問い合わせ",biz_quote:"慎重さ、信頼性、そしてゲストが良い意味で記憶に残る夜を。",
     gal_eyebrow:"雰囲気",gal_title:"ギャラリー",gal_intro:"ダナン各地で提携するルームと会場を少しご紹介。",gal_ph:"写真 — 提携会場",gal_note:"会場はすべて厳選。ご希望の雰囲気をお聞かせいただければ、最適なお部屋をご提案します。",
-    rv_eyebrow:"お客様の声",rv_title:"世界中のお客様に愛されています",rv_badge1:"厳選された会場",rv_badge2:"お客様評価",rv_badge3:"現地での年数",rv_tourist:"旅行者",rv_business:"法人のお客様",
+    rv_eyebrow:"お客様の声",rv_title:"世界中のお客様に愛されています",rv_badge1:"厳選された会場",rv_badge2:"お客様評価",rv_badge3:"現地での年数",rv_badge4:"前払い不要",rv_badge4_b:"NO",rv_tourist:"旅行者",rv_business:"法人のお客様",
     ab_eyebrow:"私たちについて",ab_title:"地元。信頼。現場で。",ab_p1:"私たちはダナンに住み、働き、6年かけて街最高の会場と本物の関係を築いてきました。",ab_p2:"休暇中の友人グループでも、重要なゲストをおもてなしする企業でも、夜のダナンを知る信頼できる単一の窓口が対応します。",
     ab_s1:"ダナンでの年数",ab_s2:"提携会場",ab_s3:"オーダーメイド",ab_quote:"6年間、夜の外出を忘れられない夜に変えてきました。",
-    ct_eyebrow:"ナイトを計画",ct_title:"あなたの夜をお聞かせください",ct_lead:"いくつかの詳細をお送りいただければ、通常数時間以内にご返信します。チャットがよろしければ、下記のいずれかのチャネルでご連絡を。",
+    ct_eyebrow:"ナイトを計画",ct_title:"あなたの夜をお聞かせください",ct_lead:"いくつかの詳細をお送りいただければ、通常数分以内にご返信します。チャットがよろしければ、下記のいずれかのチャネルでご連絡を。",ct_reply:"数分以内にご返信、いつでもお手伝いする準備ができています。",
     ct_wa:"最速の返信 · タップでチャット",ct_tg:"いつでもメッセージを",ct_kk:"韓国のお客様向け",ct_line:"日本・韓国で人気",ct_wc:"中国のお客様向け",qr_title:"KakaoTalkでチャット",qr_sub:"スマホのカメラまたはKakaoTalkアプリでQRコードをスキャンしてください。",qr_hint:"Nightlife in Da Nang",ct_mail:"法人のお問い合わせ向け",
     fm_title:"ナイトをリクエスト",fm_sub:"お約束は不要 — ご希望をお聞かせください。",fm_name:"お名前",fm_people:"人数",fm_date:"ご希望日",fm_type:"どんな夜ですか？",
     fm_o1:"VIPカラオケ",fm_o2:"ボトルサービス / 席",fm_o3:"ディナー＆ナイト",fm_o4:"法人 / プライベートイベント",fm_o5:"オーダーメイド — 詳細を説明します",
-    fm_channel:"ご希望の連絡方法",fm_contact:"電話番号 / ID / メール",fm_msg:"その他ご要望（任意）",fm_submit:"リクエストを送信",fm_note:"送信することで、リクエストに関するご連絡に同意したものとみなされます。",fm_success:"✓ ありがとうございます！リクエストを受け付けました。まもなくご連絡いたします。",
+    fm_channel:"ご希望の連絡方法",fm_contact:"電話番号 / ID / メール",fm_msg:"その他ご要望（任意）",fm_submit:"リクエストを送信",fm_note:"送信することで、リクエストに関するご連絡に同意したものとみなされます。",fm_reassure:"前払い不要 — お問い合わせは無料、義務はありません。",fm_success:"✓ ありがとうございます！リクエストを受け付けました。まもなくご連絡いたします。",
     ft_about:"旅行者と企業のためのダナンのナイトライフ。最高の会場でVIPカラオケ、プライベートイベント、ボトルサービスを。",
     ft_warn1:"🔞 18歳以上限定。全会場で身分証明書が必要です。",ft_warn2:"責任ある飲酒を推奨します。",
     ft_explore:"探索",ft_contact:"お問い合わせ",ft_wa:"WhatsApp",ft_privacy:"プライバシーポリシー",
   },
   zh:{
     nav_formats:"夜晚体验",nav_how:"如何运作",nav_reviews:"评价",nav_business:"企业服务",nav_gallery:"图库",nav_about:"关于我们",nav_cta:"预订咨询",
-    hero_trust:"100%精选场所 · 扎根本地6年 · 客户评分4.9/5",
-    rv_eyebrow:"客户评价",rv_title:"深受全球客户喜爱",rv_badge1:"精选场所",rv_badge2:"客户评分",rv_badge3:"扎根本地(年)",rv_tourist:"游客",rv_business:"企业客户",
+    hero_trust:"100%精选场所 · 扎根本地6年 · 无需预付",
+    rv_eyebrow:"客户评价",rv_title:"深受全球客户喜爱",rv_badge1:"精选场所",rv_badge2:"客户评分",rv_badge3:"扎根本地(年)",rv_badge4:"无需预付",rv_badge4_b:"无",rv_tourist:"游客",rv_business:"企业客户",
     hero_badge:"扎根岘港6年 · 服务游客与企业",
     hero_h1:"岘港难忘之夜",
     hero_sub:"在全城最佳场所享受VIP卡拉OK、私人卡座和酒水服务——全程为您安排，您只需尽情享受。",
@@ -1200,18 +1238,18 @@ const I18N = {
     s2_h:"我们规划",s2_p:"推荐合适的场所、包房和卡座，并提前与您确认每个细节。",
     s3_h:"您到达",s3_p:"私人包房就绪，迎宾酒倒好，场所接待人员恭候您的团队。",
     s4_h:"尽情享受",s4_p:"至少三小时尽情歌唱、举杯、放松。我们整夜随时待命。",
-    inc1:"私人包房",inc2:"迎宾酒水",inc3:"至少3小时",inc4:"专人接待",inc5:"专属定制",
+    inc1:"私人包房",inc2:"迎宾酒水",inc3:"至少3小时",inc4:"专人接待",inc5:"专属定制",price_label:"",price_pp:"每位",price_desc:"全包 — 私人VIP包房、迎宾酒水、至少3小时，以及场所的热情接待。无需预付。",
     biz_eyebrow:"企业服务",biz_title:"企业与私人活动",biz_p:"招待客户、合作伙伴或来访代表团时，夜晚必须完美且绝对私密。这正是我们在岘港六年来所做的。",
     biz_l1:"从头到尾完全私密保密",biz_l2:"从头到尾全程安排——场所、卡座、接送、时间",biz_l3:"单一联系人，整夜随时联系",biz_l4:"专为代表团、客户招待和团队之夜定制",
     biz_cta:"私下咨询",biz_quote:"谨慎、可靠，让宾客铭记于心的美好一夜。",
     gal_eyebrow:"氛围",gal_title:"图库",gal_intro:"一窥我们在岘港合作的包房与场所。",gal_ph:"照片 — 合作场所",gal_note:"每个场所都经过精心挑选。告诉我们您的风格，我们会为您匹配理想包房。",
     ab_eyebrow:"我们是谁",ab_title:"本地 · 可信 · 现场",ab_p1:"我们在岘港生活和工作，六年来与全城最佳场所建立了真正的关系。",ab_p2:"无论您是度假的朋友团体，还是招待重要宾客的企业，您都将拥有一位了解岘港夜生活的可信联系人。",
     ab_s1:"扎根岘港(年)",ab_s2:"合作场所",ab_s3:"全程定制",ab_quote:"六年，把夜晚变成难忘的回忆。",
-    ct_eyebrow:"规划您的夜晚",ct_title:"告诉我们您的夜晚",ct_lead:"发送一些信息，我们会尽快回复——通常在几小时内。想直接聊？通过下方任意渠道联系。",
+    ct_eyebrow:"规划您的夜晚",ct_title:"告诉我们您的夜晚",ct_lead:"发送一些信息，我们会尽快回复——通常在几分钟内。想直接聊？通过下方任意渠道联系。",ct_reply:"我们几分钟内回复，随时为您服务。",
     ct_wa:"回复最快 · 点击聊天",ct_tg:"随时留言",ct_kk:"为韩国宾客",ct_line:"日韩常用",ct_wc:"为中国宾客",qr_title:"通过KakaoTalk聊天",qr_sub:"用手机相机或KakaoTalk应用扫描二维码。",qr_hint:"Nightlife in Da Nang",ct_mail:"企业咨询",
     fm_title:"预约您的夜晚",fm_sub:"无需承诺——只需告诉我们您的想法。",fm_name:"姓名",fm_people:"团体人数",fm_date:"期望日期",fm_type:"哪种夜晚？",
     fm_o1:"VIP卡拉OK",fm_o2:"酒水服务 / 卡座",fm_o3:"晚宴与夜晚",fm_o4:"企业 / 私人活动",fm_o5:"定制——我来说明",
-    fm_channel:"最佳联系方式",fm_contact:"您的号码 / 账号 / 邮箱",fm_msg:"还有其他吗？(可选)",fm_submit:"发送请求",fm_note:"发送即表示您同意就此请求接受联系。",fm_success:"✓ 谢谢！您的请求已记录。我们会尽快联系您。",
+    fm_channel:"最佳联系方式",fm_contact:"您的号码 / 账号 / 邮箱",fm_msg:"还有其他吗？(可选)",fm_submit:"发送请求",fm_note:"发送即表示您同意就此请求接受联系。",fm_reassure:"无需预付 — 咨询免费，无任何义务。",fm_success:"✓ 谢谢！您的请求已记录。我们会尽快联系您。",
     ft_about:"为游客和企业提供岘港夜生活服务。在最佳场所享受VIP卡拉OK、私人活动和酒水服务。",
     ft_warn1:"🔞 严格限18岁以上。所有场所需出示有效证件。",ft_warn2:"我们提倡理性饮酒。",
     ft_explore:"探索",ft_contact:"联系",ft_wa:"WhatsApp",ft_privacy:"隐私政策",
