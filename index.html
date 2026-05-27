@@ -496,6 +496,9 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
 .foot-bottom{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center}
 .foot-bottom p,.foot-bottom address{color:var(--text-muted);font-size:.82rem;font-style:normal}
 .foot-legal{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.foot-credit{color:var(--text-muted);font-size:.82rem}
+.foot-credit a{color:var(--accent);transition:opacity var(--transition)}
+.foot-credit a:hover{opacity:.75}
 .foot-warn{margin-top:18px;color:var(--text-muted);font-size:.8rem;display:flex;flex-direction:column;gap:4px}
 .foot-warn span b{color:var(--text)}
 
@@ -610,7 +613,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
     <div class="container">
       <div class="hero-badge"><b>🔞 18+</b> · <span data-i18n="hero_badge">6 years in Da Nang · For travelers & companies</span></div>
       <h1 data-i18n="hero_h1">Unforgettable Nights in Da Nang</h1>
-      <p class="hero-sub" data-i18n="hero_sub">VIP karaoke, private tables and bottle service at the city's best venues — arranged end to end, so all you do is enjoy the night.</p>
+      <p class="hero-sub" data-i18n="hero_sub">Private VIP karaoke, reserved tables and bottle service at the city's finest venues — every detail arranged for you, so all you do is arrive and enjoy. Tell us your night and we'll take care of the rest.</p>
       <div class="hero-ctas">
         <a href="#contact" class="btn btn-primary" data-i18n="hero_cta1">Plan My Night</a>
         <a href="#business" class="btn btn-ghost" data-i18n="hero_cta2">Corporate & Private Events</a>
@@ -819,7 +822,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
   <div class="container contact-inner">
     <div class="reveal">
       <span class="eyebrow" data-i18n="ct_eyebrow">Plan Your Night</span>
-      <h2 data-i18n="ct_title">Tell Us About Your Night</h2>
+      <h2 data-i18n="ct_title">Plan Your Perfect Night</h2>
       <p class="contact-lead" data-i18n="ct_lead">Send a few details and we'll get back to you fast — usually within minutes. Prefer to chat? Reach us on any channel below.</p>
       <div class="reply-badge"><span class="pulse-dot"></span> <span data-i18n="ct_reply">We reply in minutes, ready to serve you.</span></div>
       <div class="channels">
@@ -853,7 +856,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
     <!-- SMART LEAD FORM -->
     <div class="lead-form reveal">
       <h3 data-i18n="fm_title">Request Your Night</h3>
-      <p class="fsub" data-i18n="fm_sub">No commitment — just tell us what you have in mind.</p>
+      <p class="fsub" data-i18n="fm_sub">Share a few details and we'll craft the perfect evening for you. No commitment, no upfront payment — just tell us what you have in mind.</p>
       <form id="leadForm">
         <div class="field">
           <label for="lf_name" data-i18n="fm_name">Full name</label>
@@ -943,6 +946,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
       <div class="foot-legal">
         <p>© <span id="yr"></span> Nightlife in Da Nang</p>
         <a href="#" data-i18n="ft_privacy">Privacy Policy</a>
+        <span class="foot-credit">Website by <a href="https://aipartners.vn" target="_blank" rel="noopener">AiPartners.vn</a></span>
       </div>
     </div>
   </div>
@@ -1125,7 +1129,7 @@ const I18N = {
     rv_eyebrow:"Khách hàng nói gì",rv_title:"Được khách hàng toàn cầu yêu thích",rv_badge1:"Địa điểm chọn lọc",rv_badge2:"Đánh giá khách",rv_badge3:"Năm hoạt động",rv_badge4:"Trả trước",rv_badge4_b:"Không",rv_tourist:"Du khách",rv_business:"Khách doanh nghiệp",
     hero_badge:"6 năm tại Đà Nẵng · Cho du khách & doanh nghiệp",
     hero_h1:"Những đêm khó quên tại Đà Nẵng",
-    hero_sub:"Karaoke VIP, bàn riêng và bottle service tại những địa điểm tốt nhất thành phố — sắp xếp trọn gói, bạn chỉ việc tận hưởng.",
+    hero_sub:"Karaoke VIP riêng tư, bàn đặt trước và bottle service tại những địa điểm đẳng cấp nhất — mọi chi tiết được lo cho bạn, bạn chỉ cần đến và tận hưởng. Hãy cho chúng tôi biết, phần còn lại để chúng tôi lo.",
     hero_cta1:"Lên kế hoạch",hero_cta2:"Sự kiện doanh nghiệp",hero_wa:"Hoặc nhắn trực tiếp cho chúng tôi",
     aud1_tag:"Cho nhóm & du khách",aud1_h:"Một đêm trọn vẹn",aud1_p:"Phòng karaoke riêng, bàn đẹp nhất và sự tiếp đón nồng hậu của các địa điểm đối tác — dẫn dắt bởi người thực sự hiểu Đà Nẵng về đêm.",aud1_cta:"Xem các buổi tối →",
     aud2_tag:"Cho doanh nghiệp & sự kiện riêng",aud2_h:"Kín đáo. Đáng tin. Trọn gói.",aud2_p:"Tiếp khách, tối đoàn và buổi tối nhóm — tổ chức từ A đến Z với sự kín đáo tuyệt đối.",aud2_cta:"Liên hệ riêng →",
@@ -1148,9 +1152,9 @@ const I18N = {
     gal_eyebrow:"Không khí",gal_title:"Thư viện",gal_intro:"Một thoáng về các phòng và địa điểm chúng tôi hợp tác tại Đà Nẵng.",gal_ph:"Ảnh — địa điểm đối tác",gal_note:"Mỗi địa điểm đều được tuyển chọn kỹ. Cho chúng tôi biết phong cách của bạn, chúng tôi sẽ tìm phòng phù hợp.",
     ab_eyebrow:"Chúng tôi là ai",ab_title:"Bản địa. Đáng tin. Tận nơi.",ab_p1:"Chúng tôi sống và làm việc tại Đà Nẵng, đã sáu năm xây dựng quan hệ thực sự với các địa điểm tốt nhất thành phố.",ab_p2:"Dù bạn là nhóm bạn đi nghỉ hay doanh nghiệp tiếp khách quan trọng, bạn có một đầu mối tin cậy hiểu Đà Nẵng về đêm.",
     ab_s1:"Năm tại Đà Nẵng",ab_s2:"Địa điểm đối tác",ab_s3:"Theo yêu cầu",ab_quote:"Sáu năm biến những đêm đi chơi thành những đêm khó quên.",
-    ct_eyebrow:"Lên kế hoạch",ct_title:"Kể cho chúng tôi về buổi tối của bạn",ct_lead:"Gửi vài chi tiết và chúng tôi sẽ phản hồi nhanh — thường trong vài phút. Muốn nhắn tin? Liên hệ qua kênh bất kỳ.",ct_reply:"Chúng tôi phản hồi trong vài phút, sẵn sàng phục vụ bạn.",
+    ct_eyebrow:"Lên kế hoạch",ct_title:"Lên kế hoạch cho buổi tối hoàn hảo",ct_lead:"Gửi vài chi tiết và chúng tôi sẽ phản hồi nhanh — thường trong vài phút. Muốn nhắn tin? Liên hệ qua kênh bất kỳ.",ct_reply:"Chúng tôi phản hồi trong vài phút, sẵn sàng phục vụ bạn.",
     ct_wa:"Phản hồi nhanh nhất · nhấn để nhắn",ct_tg:"Nhắn bất cứ lúc nào",ct_kk:"Cho khách Hàn Quốc",ct_line:"Phổ biến ở Nhật & Hàn",ct_wc:"Cho khách Trung Quốc",qr_title:"Trò chuyện trên KakaoTalk",qr_sub:"Quét mã QR bằng camera điện thoại hoặc ứng dụng KakaoTalk.",qr_hint:"Nightlife in Da Nang",ct_mail:"Cho yêu cầu doanh nghiệp",
-    fm_title:"Yêu cầu buổi tối",fm_sub:"Không ràng buộc — chỉ cần cho chúng tôi biết ý tưởng.",fm_name:"Họ tên",fm_people:"Số người",fm_date:"Ngày mong muốn",fm_type:"Loại buổi tối?",
+    fm_title:"Yêu cầu buổi tối",fm_sub:"Chia sẻ vài chi tiết và chúng tôi sẽ tạo nên buổi tối hoàn hảo cho bạn. Không ràng buộc, không trả trước — chỉ cần cho chúng tôi biết ý bạn.",fm_name:"Họ tên",fm_people:"Số người",fm_date:"Ngày mong muốn",fm_type:"Loại buổi tối?",
     fm_o1:"Karaoke VIP",fm_o2:"Bottle Service / Bàn",fm_o3:"Tối & Đêm",fm_o4:"Sự kiện doanh nghiệp / riêng",fm_o5:"Theo yêu cầu — tôi sẽ giải thích",
     fm_channel:"Cách liên hệ tốt nhất",fm_contact:"Số / tài khoản / email của bạn",fm_msg:"Còn gì nữa không? (tùy chọn)",fm_submit:"Gửi yêu cầu",fm_note:"Khi gửi, bạn đồng ý được liên hệ về yêu cầu.",fm_reassure:"Không trả trước — yêu cầu miễn phí và không ràng buộc.",fm_success:"✓ Cảm ơn! Yêu cầu của bạn đã được ghi nhận. Chúng tôi sẽ liên hệ sớm.",
     ft_about:"Giải trí về đêm tại Đà Nẵng cho du khách và doanh nghiệp. Karaoke VIP, sự kiện riêng và bottle service tại những địa điểm tốt nhất.",
@@ -1163,7 +1167,7 @@ const I18N = {
     rv_eyebrow:"고객 후기",rv_title:"전 세계 고객이 사랑하는 곳",rv_badge1:"엄선된 장소",rv_badge2:"고객 평점",rv_badge3:"현장 경력(년)",rv_badge4:"선결제 없음",rv_badge4_b:"NO",rv_tourist:"여행객",rv_business:"기업 고객",
     hero_badge:"다낭 6년 경력 · 여행객 & 기업 대상",
     hero_h1:"다낭에서의 잊지 못할 밤",
-    hero_sub:"도시 최고의 장소에서 VIP 노래방, 프라이빗 테이블, 보틀 서비스를 처음부터 끝까지 준비해 드립니다. 즐기기만 하세요.",
+    hero_sub:"도시 최고급 장소의 프라이빗 VIP 노래방, 예약 테이블, 보틀 서비스 — 모든 디테일을 준비해 드리니, 도착해서 즐기기만 하세요. 원하시는 밤을 알려주시면 나머지는 저희가 맡습니다.",
     hero_cta1:"밤 계획하기",hero_cta2:"기업 & 프라이빗 행사",hero_wa:"또는 바로 메시지 보내기",
     aud1_tag:"단체 & 여행객",aud1_h:"제대로 된 밤",aud1_p:"프라이빗 노래방, 최고의 테이블, 파트너 장소의 따뜻한 환대 — 밤의 다낭을 잘 아는 사람이 안내합니다.",aud1_cta:"나이트 보기 →",
     aud2_tag:"기업 & 프라이빗 행사",aud2_h:"신중하게. 확실하게. 완벽하게.",aud2_p:"고객 접대, 대표단 행사, 팀 나이트 — 완벽한 비밀 보장과 함께 A부터 Z까지 준비합니다.",aud2_cta:"개별 문의 →",
@@ -1186,9 +1190,9 @@ const I18N = {
     gal_eyebrow:"분위기",gal_title:"갤러리",gal_intro:"다낭 전역의 파트너 장소와 룸을 살짝 엿보세요.",gal_ph:"사진 — 파트너 장소",gal_note:"모든 장소는 엄선되었습니다. 원하시는 분위기를 알려주시면 완벽한 룸을 매칭해 드립니다.",
     ab_eyebrow:"우리는",ab_title:"현지. 신뢰. 현장.",ab_p1:"우리는 다낭에 살며 일하고, 6년간 도시 최고의 장소들과 진짜 관계를 쌓아왔습니다.",ab_p2:"휴가 중인 친구 모임이든 중요한 손님을 접대하는 기업이든, 밤의 다낭을 아는 신뢰할 수 있는 단일 연락처를 갖게 됩니다.",
     ab_s1:"다낭 경력(년)",ab_s2:"파트너 장소",ab_s3:"맞춤 제작",ab_quote:"6년간 평범한 밤을 잊지 못할 밤으로.",
-    ct_eyebrow:"밤 계획하기",ct_title:"당신의 밤을 알려주세요",ct_lead:"몇 가지 정보를 보내주시면 보통 몇 분 내에 답변드립니다. 채팅을 원하시면 아래 채널로 연락하세요.",ct_reply:"몇 분 내에 답변드리며, 언제든 도와드릴 준비가 되어 있습니다.",
+    ct_eyebrow:"밤 계획하기",ct_title:"완벽한 밤을 계획하세요",ct_lead:"몇 가지 정보를 보내주시면 보통 몇 분 내에 답변드립니다. 채팅을 원하시면 아래 채널로 연락하세요.",ct_reply:"몇 분 내에 답변드리며, 언제든 도와드릴 준비가 되어 있습니다.",
     ct_wa:"가장 빠른 답변 · 탭하여 채팅",ct_tg:"언제든 메시지",ct_kk:"한국 고객용",ct_line:"일본·한국에서 인기",ct_wc:"중국 고객용",qr_title:"카카오톡으로 채팅",qr_sub:"휴대폰 카메라나 카카오톡 앱으로 QR 코드를 스캔하세요.",qr_hint:"Nightlife in Da Nang",ct_mail:"기업 문의용",
-    fm_title:"밤 요청하기",fm_sub:"부담 없이 — 생각하시는 것을 알려주세요.",fm_name:"성함",fm_people:"인원수",fm_date:"희망 날짜",fm_type:"어떤 밤인가요?",
+    fm_title:"밤 요청하기",fm_sub:"몇 가지 정보를 알려주시면 완벽한 저녁을 준비해 드립니다. 부담도, 선결제도 없습니다 — 생각하신 것만 말씀해 주세요.",fm_name:"성함",fm_people:"인원수",fm_date:"희망 날짜",fm_type:"어떤 밤인가요?",
     fm_o1:"VIP 노래방",fm_o2:"보틀 서비스 / 테이블",fm_o3:"디너 & 나이트",fm_o4:"기업 / 프라이빗 행사",fm_o5:"맞춤 — 직접 설명",
     fm_channel:"연락 받을 방법",fm_contact:"번호 / 아이디 / 이메일",fm_msg:"더 하실 말씀? (선택)",fm_submit:"요청 보내기",fm_note:"보내시면 요청 관련 연락에 동의하는 것입니다.",fm_reassure:"선결제 없음 — 문의는 무료이며 부담이 없습니다.",fm_success:"✓ 감사합니다! 요청이 접수되었습니다. 곧 연락드리겠습니다.",
     ft_about:"여행객과 기업을 위한 다낭 나이트라이프. 최고의 장소에서 VIP 노래방, 프라이빗 행사, 보틀 서비스.",
@@ -1199,7 +1203,7 @@ const I18N = {
     nav_formats:"ナイト",nav_how:"ご利用の流れ",nav_reviews:"口コミ",nav_business:"法人のお客様",nav_gallery:"ギャラリー",nav_about:"私たちについて",nav_cta:"ナイトを計画",
     hero_badge:"ダナンで6年 · 旅行者と企業のために",
     hero_h1:"ダナンの忘れられない夜",
-    hero_sub:"VIPカラオケ、プライベートテーブル、ボトルサービスを街最高の会場で。すべて手配いたしますので、あなたは夜を楽しむだけ。",
+    hero_sub:"街屈指の会場でのプライベートVIPカラオケ、予約テーブル、ボトルサービス — すべて手配いたしますので、到着して楽しむだけ。ご希望をお聞かせいただければ、あとはお任せください。",
     hero_cta1:"ナイトを計画",hero_cta2:"法人・プライベートイベント",hero_wa:"または直接メッセージを",
     hero_trust:"100%厳選された会場 · 現地で6年 · 前払い不要",
     aud1_tag:"グループ・旅行者の方へ",aud1_h:"最高の夜を、確実に",aud1_p:"プライベートカラオケルーム、最高の席、提携会場の温かいおもてなし。夜のダナンを知り尽くしたスタッフがご案内します。",aud1_cta:"ナイトを見る →",
@@ -1224,9 +1228,9 @@ const I18N = {
     rv_eyebrow:"お客様の声",rv_title:"世界中のお客様に愛されています",rv_badge1:"厳選された会場",rv_badge2:"お客様評価",rv_badge3:"現地での年数",rv_badge4:"前払い不要",rv_badge4_b:"NO",rv_tourist:"旅行者",rv_business:"法人のお客様",
     ab_eyebrow:"私たちについて",ab_title:"地元。信頼。現場で。",ab_p1:"私たちはダナンに住み、働き、6年かけて街最高の会場と本物の関係を築いてきました。",ab_p2:"休暇中の友人グループでも、重要なゲストをおもてなしする企業でも、夜のダナンを知る信頼できる単一の窓口が対応します。",
     ab_s1:"ダナンでの年数",ab_s2:"提携会場",ab_s3:"オーダーメイド",ab_quote:"6年間、夜の外出を忘れられない夜に変えてきました。",
-    ct_eyebrow:"ナイトを計画",ct_title:"あなたの夜をお聞かせください",ct_lead:"いくつかの詳細をお送りいただければ、通常数分以内にご返信します。チャットがよろしければ、下記のいずれかのチャネルでご連絡を。",ct_reply:"数分以内にご返信、いつでもお手伝いする準備ができています。",
+    ct_eyebrow:"ナイトを計画",ct_title:"完璧な夜を計画する",ct_lead:"いくつかの詳細をお送りいただければ、通常数分以内にご返信します。チャットがよろしければ、下記のいずれかのチャネルでご連絡を。",ct_reply:"数分以内にご返信、いつでもお手伝いする準備ができています。",
     ct_wa:"最速の返信 · タップでチャット",ct_tg:"いつでもメッセージを",ct_kk:"韓国のお客様向け",ct_line:"日本・韓国で人気",ct_wc:"中国のお客様向け",qr_title:"KakaoTalkでチャット",qr_sub:"スマホのカメラまたはKakaoTalkアプリでQRコードをスキャンしてください。",qr_hint:"Nightlife in Da Nang",ct_mail:"法人のお問い合わせ向け",
-    fm_title:"ナイトをリクエスト",fm_sub:"お約束は不要 — ご希望をお聞かせください。",fm_name:"お名前",fm_people:"人数",fm_date:"ご希望日",fm_type:"どんな夜ですか？",
+    fm_title:"ナイトをリクエスト",fm_sub:"いくつかの詳細をお知らせいただければ、完璧な夜をご用意します。お約束も前払いも不要 — ご希望をお聞かせください。",fm_name:"お名前",fm_people:"人数",fm_date:"ご希望日",fm_type:"どんな夜ですか？",
     fm_o1:"VIPカラオケ",fm_o2:"ボトルサービス / 席",fm_o3:"ディナー＆ナイト",fm_o4:"法人 / プライベートイベント",fm_o5:"オーダーメイド — 詳細を説明します",
     fm_channel:"ご希望の連絡方法",fm_contact:"電話番号 / ID / メール",fm_msg:"その他ご要望（任意）",fm_submit:"リクエストを送信",fm_note:"送信することで、リクエストに関するご連絡に同意したものとみなされます。",fm_reassure:"前払い不要 — お問い合わせは無料、義務はありません。",fm_success:"✓ ありがとうございます！リクエストを受け付けました。まもなくご連絡いたします。",
     ft_about:"旅行者と企業のためのダナンのナイトライフ。最高の会場でVIPカラオケ、プライベートイベント、ボトルサービスを。",
@@ -1239,7 +1243,7 @@ const I18N = {
     rv_eyebrow:"客户评价",rv_title:"深受全球客户喜爱",rv_badge1:"精选场所",rv_badge2:"客户评分",rv_badge3:"扎根本地(年)",rv_badge4:"无需预付",rv_badge4_b:"无",rv_tourist:"游客",rv_business:"企业客户",
     hero_badge:"扎根岘港6年 · 服务游客与企业",
     hero_h1:"岘港难忘之夜",
-    hero_sub:"在全城最佳场所享受VIP卡拉OK、私人卡座和酒水服务——全程为您安排，您只需尽情享受。",
+    hero_sub:"在全城顶级场所享受私人VIP卡拉OK、预订卡座和酒水服务——每个细节都为您安排妥当，您只需到场尽情享受。告诉我们您的想法，其余交给我们。",
     hero_cta1:"规划夜晚",hero_cta2:"企业与私人活动",hero_wa:"或直接给我们留言",
     aud1_tag:"团体与游客",aud1_h:"尽兴的一夜",aud1_p:"私人卡拉OK包房、最佳卡座，以及合作场所的热情接待——由真正了解岘港夜生活的人为您引领。",aud1_cta:"查看夜晚体验 →",
     aud2_tag:"企业与私人活动",aud2_h:"谨慎 · 可靠 · 全包",aud2_p:"客户招待、代表团之夜和团队聚会——从头到尾全程安排，绝对私密。",aud2_cta:"私下咨询 →",
@@ -1262,9 +1266,9 @@ const I18N = {
     gal_eyebrow:"氛围",gal_title:"图库",gal_intro:"一窥我们在岘港合作的包房与场所。",gal_ph:"照片 — 合作场所",gal_note:"每个场所都经过精心挑选。告诉我们您的风格，我们会为您匹配理想包房。",
     ab_eyebrow:"我们是谁",ab_title:"本地 · 可信 · 现场",ab_p1:"我们在岘港生活和工作，六年来与全城最佳场所建立了真正的关系。",ab_p2:"无论您是度假的朋友团体，还是招待重要宾客的企业，您都将拥有一位了解岘港夜生活的可信联系人。",
     ab_s1:"扎根岘港(年)",ab_s2:"合作场所",ab_s3:"全程定制",ab_quote:"六年，把夜晚变成难忘的回忆。",
-    ct_eyebrow:"规划您的夜晚",ct_title:"告诉我们您的夜晚",ct_lead:"发送一些信息，我们会尽快回复——通常在几分钟内。想直接聊？通过下方任意渠道联系。",ct_reply:"我们几分钟内回复，随时为您服务。",
+    ct_eyebrow:"规划您的夜晚",ct_title:"规划您的完美夜晚",ct_lead:"发送一些信息，我们会尽快回复——通常在几分钟内。想直接聊？通过下方任意渠道联系。",ct_reply:"我们几分钟内回复，随时为您服务。",
     ct_wa:"回复最快 · 点击聊天",ct_tg:"随时留言",ct_kk:"为韩国宾客",ct_line:"日韩常用",ct_wc:"为中国宾客",qr_title:"通过KakaoTalk聊天",qr_sub:"用手机相机或KakaoTalk应用扫描二维码。",qr_hint:"Nightlife in Da Nang",ct_mail:"企业咨询",
-    fm_title:"预约您的夜晚",fm_sub:"无需承诺——只需告诉我们您的想法。",fm_name:"姓名",fm_people:"团体人数",fm_date:"期望日期",fm_type:"哪种夜晚？",
+    fm_title:"预约您的夜晚",fm_sub:"分享一些信息，我们将为您打造完美夜晚。无需承诺，无需预付——只需告诉我们您的想法。",fm_name:"姓名",fm_people:"团体人数",fm_date:"期望日期",fm_type:"哪种夜晚？",
     fm_o1:"VIP卡拉OK",fm_o2:"酒水服务 / 卡座",fm_o3:"晚宴与夜晚",fm_o4:"企业 / 私人活动",fm_o5:"定制——我来说明",
     fm_channel:"最佳联系方式",fm_contact:"您的号码 / 账号 / 邮箱",fm_msg:"还有其他吗？(可选)",fm_submit:"发送请求",fm_note:"发送即表示您同意就此请求接受联系。",fm_reassure:"无需预付 — 咨询免费，无任何义务。",fm_success:"✓ 谢谢！您的请求已记录。我们会尽快联系您。",
     ft_about:"为游客和企业提供岘港夜生活服务。在最佳场所享受VIP卡拉OK、私人活动和酒水服务。",
@@ -1277,7 +1281,7 @@ const I18N = {
     rv_eyebrow:"Отзывы гостей",rv_title:"Нас любят гости по всему миру",rv_badge1:"Отобранные заведения",rv_badge2:"Рейтинг гостей",rv_badge3:"Лет на месте",rv_badge4:"Предоплаты",rv_badge4_b:"Без",rv_tourist:"Турист",rv_business:"Корпоративный клиент",
     hero_badge:"6 лет в Дананге · Для туристов и компаний",
     hero_h1:"Незабываемые ночи в Дананге",
-    hero_sub:"VIP-караоке, приватные столы и бутылочный сервис в лучших заведениях города — всё организуем за вас, вам остаётся только наслаждаться вечером.",
+    hero_sub:"Приватное VIP-караоке, зарезервированные столы и бутылочный сервис в лучших заведениях города — каждую деталь организуем за вас, вам остаётся приехать и наслаждаться. Расскажите о вашем вечере, остальное мы берём на себя.",
     hero_cta1:"Запланировать вечер",hero_cta2:"Корпоративные и частные мероприятия",hero_wa:"Или напишите нам напрямую",
     aud1_tag:"Компании и туристы",aud1_h:"Вечер, которым можно наслаждаться",aud1_p:"Приватные караоке-залы, лучшие столы и тёплый приём в заведениях-партнёрах — с теми, кто действительно знает ночной Дананг.",aud1_cta:"Посмотреть вечера →",
     aud2_tag:"Корпоративные и частные мероприятия",aud2_h:"Конфиденциально · Надёжно · Всё включено",aud2_p:"Приём клиентов, вечера для делегаций и встречи команды — организуем от и до, абсолютно конфиденциально.",aud2_cta:"Конфиденциальный запрос →",
@@ -1300,9 +1304,9 @@ const I18N = {
     gal_eyebrow:"Атмосфера",gal_title:"Галерея",gal_intro:"Загляните в залы и заведения, с которыми мы работаем в Дананге.",gal_ph:"Фото — заведение-партнёр",gal_note:"Каждое заведение тщательно отобрано. Расскажите о вашем вкусе — мы подберём идеальный зал.",
     ab_eyebrow:"Кто мы",ab_title:"Местные · Надёжные · На месте",ab_p1:"Мы живём и работаем в Дананге и за шесть лет выстроили настоящие отношения с лучшими заведениями города.",ab_p2:"Будь вы компанией друзей на отдыхе или фирмой, принимающей важных гостей, у вас будет один надёжный контакт, знающий ночной Дананг.",
     ab_s1:"Лет в Дананге",ab_s2:"Заведений-партнёров",ab_s3:"Под заказ",ab_quote:"Шесть лет превращаем вечера в незабываемые воспоминания.",
-    ct_eyebrow:"Запланируйте ваш вечер",ct_title:"Расскажите о вашем вечере",ct_lead:"Отправьте несколько деталей, и мы ответим быстро — обычно в течение нескольких минут. Хотите написать? Свяжитесь по любому каналу ниже.",ct_reply:"Отвечаем за несколько минут, готовы вас обслужить.",
+    ct_eyebrow:"Запланируйте ваш вечер",ct_title:"Спланируйте идеальный вечер",ct_lead:"Отправьте несколько деталей, и мы ответим быстро — обычно в течение нескольких минут. Хотите написать? Свяжитесь по любому каналу ниже.",ct_reply:"Отвечаем за несколько минут, готовы вас обслужить.",
     ct_wa:"Самый быстрый ответ · нажмите для чата",ct_tg:"Пишите в любое время",ct_kk:"Для корейских гостей",ct_line:"Популярно в Японии и Корее",ct_wc:"Для китайских гостей",qr_title:"Чат в KakaoTalk",qr_sub:"Отсканируйте QR-код камерой телефона или приложением.",qr_hint:"Nightlife in Da Nang",ct_mail:"Корпоративные запросы",
-    fm_title:"Запросите ваш вечер",fm_sub:"Без обязательств — просто расскажите, что вы хотите.",fm_name:"Имя",fm_people:"Размер группы",fm_date:"Желаемая дата",fm_type:"Какой вечер?",
+    fm_title:"Запросите ваш вечер",fm_sub:"Поделитесь деталями, и мы создадим для вас идеальный вечер. Без обязательств и предоплаты — просто расскажите, что вы задумали.",fm_name:"Имя",fm_people:"Размер группы",fm_date:"Желаемая дата",fm_type:"Какой вечер?",
     fm_o1:"VIP-караоке",fm_o2:"Бутылочный сервис / столы",fm_o3:"Ужин и ночь",fm_o4:"Корпоратив / частное",fm_o5:"На заказ — опишу сам",
     fm_channel:"Удобный способ связи",fm_contact:"Ваш номер / аккаунт / email",fm_msg:"Что-то ещё? (необязательно)",fm_submit:"Отправить запрос",fm_note:"Отправляя, вы соглашаетесь на связь по вашему запросу.",fm_reassure:"Без предоплаты — запрос бесплатный и ни к чему не обязывает.",fm_success:"✓ Спасибо! Ваш запрос принят. Мы скоро свяжемся с вами.",
     ft_about:"Ночная жизнь Дананга для туристов и компаний. VIP-караоке, частные мероприятия и бутылочный сервис в лучших заведениях.",
