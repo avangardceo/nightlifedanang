@@ -1,4 +1,39 @@
+# robots.txt — Nightlife in Da Nang
+# Tutti i motori di ricerca sono benvenuti su tutto il sito.
+
+# Regola generale: ogni bot può indicizzare tutto
 User-agent: *
 Allow: /
 
+# --- Google ---
+User-agent: Googlebot
+Allow: /
+User-agent: Googlebot-Image
+Allow: /
+
+# --- Bing (Microsoft) ---
+User-agent: Bingbot
+Allow: /
+
+# --- Naver (Corea) ---
+User-agent: Yeti
+Allow: /
+
+# --- Yandex (Russia) ---
+User-agent: Yandex
+Allow: /
+
+# --- Baidu (Cina) ---
+User-agent: Baiduspider
+Allow: /
+
+# --- Altri motori ---
+User-agent: DuckDuckBot
+Allow: /
+User-agent: Sogou web spider
+Allow: /
+User-agent: Applebot
+Allow: /
+
+# Mappa del sito
 Sitemap: https://nightlifeindanang.com/sitemap.xml
