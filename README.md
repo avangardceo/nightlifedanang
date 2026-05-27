@@ -75,7 +75,6 @@ Cerca poi i commenti `TODO` nel file per gli altri segnaposti:
 ---
 
 ## 📨 Attivare il form (ricevere le richieste via email)
-
 Il form "Request Your Night" è già collegato a **Web3Forms** (gratuito).
 Per ricevere i risultati nella tua casella email:
 
@@ -91,9 +90,25 @@ Per ricevere i risultati nella tua casella email:
 
 ---
 
+## 🌍 Farsi trovare su Google, Naver, Yandex, Baidu, Bing
+
+Il sito è già predisposto per tutti i principali motori (meta-tag robots, sitemap,
+hreflang per le 6 lingue). Per indicizzarti attivamente, registra il sito su ciascuna
+console (gratis) e inserisci il codice di verifica nei meta-tag dell'`<head>` di `index.html`:
+
+- **Google** → https://search.google.com/search-console
+- **Naver** (Corea) → https://searchadvisor.naver.com → codice in `naver-site-verification`
+- **Yandex** (Russia) → https://webmaster.yandex.com → codice in `yandex-verification`
+- **Baidu** (Cina) → https://ziyuan.baidu.com → codice in `baidu-site-verification`
+- **Bing** → https://www.bing.com/webmasters → codice in `msvalidate.01`
+
+In ogni console, dopo la verifica, invia il sitemap: `https://nightlifeindanang.com/sitemap.xml`
+
+---
+
 ## Caratteristiche
 
-- **5 lingue**: Inglese, Vietnamita, Coreano, Giapponese, Cinese
+- **6 lingue**: Inglese, Vietnamita, Coreano, Giapponese, Cinese, Russo
   (rilevamento automatico della lingua del browser, fallback su Inglese)
 - **Video hero** a tutta altezza (muto, in loop)
 - **6 canali di contatto**: WhatsApp, Telegram (QR), KakaoTalk (QR), LINE (QR), WeChat (QR), Email

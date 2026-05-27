@@ -16,7 +16,23 @@
 <link rel="alternate" hreflang="ko" href="https://nightlifeindanang.com/?lang=ko">
 <link rel="alternate" hreflang="zh" href="https://nightlifeindanang.com/?lang=zh">
 <link rel="alternate" hreflang="ja" href="https://nightlifeindanang.com/?lang=ja">
+<link rel="alternate" hreflang="ru" href="https://nightlifeindanang.com/?lang=ru">
 <link rel="alternate" hreflang="x-default" href="https://nightlifeindanang.com/">
+
+<!-- Crawler: consenti l'indicizzazione a tutti i motori -->
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
+<meta name="yeti" content="index, follow"><!-- Naver (Corea) -->
+<meta name="yandex" content="index, follow"><!-- Yandex (Russia) -->
+<meta name="baiduspider" content="index, follow"><!-- Baidu (Cina) -->
+
+<!-- Verifiche motori di ricerca: sostituire con i codici reali dalle rispettive console.
+     Naver:  https://searchadvisor.naver.com   |  Yandex: https://webmaster.yandex.com
+     Baidu:  https://ziyuan.baidu.com          |  Bing:   https://www.bing.com/webmasters -->
+<meta name="naver-site-verification" content="INSERISCI-CODICE-NAVER">
+<meta name="yandex-verification" content="INSERISCI-CODICE-YANDEX">
+<meta name="baidu-site-verification" content="INSERISCI-CODICE-BAIDU">
+<meta name="msvalidate.01" content="INSERISCI-CODICE-BING">
 
 <!-- Open Graph -->
 <meta property="og:type" content="business.business">
@@ -565,6 +581,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
           <button class="lang-opt" data-lang="ko" role="menuitem"><span class="flag">🇰🇷</span><span class="lname">한국어</span><span class="check">✓</span></button>
           <button class="lang-opt" data-lang="ja" role="menuitem"><span class="flag">🇯🇵</span><span class="lname">日本語</span><span class="check">✓</span></button>
           <button class="lang-opt" data-lang="zh" role="menuitem"><span class="flag">🇨🇳</span><span class="lname">中文</span><span class="check">✓</span></button>
+          <button class="lang-opt" data-lang="ru" role="menuitem"><span class="flag">🇷🇺</span><span class="lname">Русский</span><span class="check">✓</span></button>
         </div>
       </div>
       <a href="#contact" class="btn btn-primary nav-cta" data-i18n="nav_cta">Plan My Night</a>
@@ -986,9 +1003,9 @@ function buildLinks(){
     telegram:'<svg viewBox="0 0 24 24" style="fill:#2AABEE"><path d="M22 3 2 11l5 2 2 6 3-3 5 4 5-17zM9 14l9-7-7 8-2 4z"/></svg>'
   };
   const QR_DATA={
-    kakao:{ic:ICONS.kakao,bg:'rgba(255,235,0,.16)',title:{en:'Chat on KakaoTalk',vi:'Trò chuyện trên KakaoTalk',ko:'카카오톡으로 채팅',ja:'KakaoTalkでチャット',zh:'通过KakaoTalk聊天'},img:'media/kakao-qr.png'},
-    line:{ic:ICONS.line,bg:'rgba(6,199,85,.16)',title:{en:'Chat on LINE',vi:'Trò chuyện trên LINE',ko:'라인으로 채팅',ja:'LINEでチャット',zh:'通过LINE聊天'},img:'media/line-qr.png'},
-    wechat:{ic:ICONS.wechat,bg:'rgba(7,193,96,.16)',title:{en:'Chat on WeChat',vi:'Trò chuyện trên WeChat',ko:'위챗으로 채팅',ja:'WeChatでチャット',zh:'通过微信聊天'},img:'media/wechat-qr.png'},
+    kakao:{ic:ICONS.kakao,bg:'rgba(255,235,0,.16)',title:{en:'Chat on KakaoTalk',vi:'Trò chuyện trên KakaoTalk',ko:'카카오톡으로 채팅',ja:'KakaoTalkでチャット',zh:'通过KakaoTalk聊天',ru:'Чат в KakaoTalk'},img:'media/kakao-qr.png'},
+    line:{ic:ICONS.line,bg:'rgba(6,199,85,.16)',title:{en:'Chat on LINE',vi:'Trò chuyện trên LINE',ko:'라인으로 채팅',ja:'LINEでチャット',zh:'通过LINE聊天',ru:'Чат в LINE'},img:'media/line-qr.png'},
+    wechat:{ic:ICONS.wechat,bg:'rgba(7,193,96,.16)',title:{en:'Chat on WeChat',vi:'Trò chuyện trên WeChat',ko:'위챗으로 채팅',ja:'WeChatでチャット',zh:'通过微信聊天',ru:'Чат в WeChat'},img:'media/wechat-qr.png'},
     telegram:{ic:ICONS.telegram,bg:'rgba(42,171,238,.16)',title:{en:'Chat on Telegram',vi:'Trò chuyện trên Telegram',ko:'텔레그램으로 채팅',ja:'Telegramでチャット',zh:'通过Telegram聊天'},img:'media/telegram-qr.png'}
   };
   function openQR(kind){
@@ -1254,6 +1271,44 @@ const I18N = {
     ft_warn1:"🔞 严格限18岁以上。所有场所需出示有效证件。",ft_warn2:"我们提倡理性饮酒。",
     ft_explore:"探索",ft_contact:"联系",ft_wa:"WhatsApp",ft_privacy:"隐私政策",
   },
+  ru:{
+    nav_formats:"Вечера",nav_how:"Как это работает",nav_reviews:"Отзывы",nav_business:"Для компаний",nav_gallery:"Галерея",nav_about:"О нас",nav_cta:"Запланировать вечер",
+    hero_trust:"100% отобранные заведения · 6 лет на месте · Без предоплаты",
+    rv_eyebrow:"Отзывы гостей",rv_title:"Нас любят гости по всему миру",rv_badge1:"Отобранные заведения",rv_badge2:"Рейтинг гостей",rv_badge3:"Лет на месте",rv_badge4:"Предоплаты",rv_badge4_b:"Без",rv_tourist:"Турист",rv_business:"Корпоративный клиент",
+    hero_badge:"6 лет в Дананге · Для туристов и компаний",
+    hero_h1:"Незабываемые ночи в Дананге",
+    hero_sub:"VIP-караоке, приватные столы и бутылочный сервис в лучших заведениях города — всё организуем за вас, вам остаётся только наслаждаться вечером.",
+    hero_cta1:"Запланировать вечер",hero_cta2:"Корпоративные и частные мероприятия",hero_wa:"Или напишите нам напрямую",
+    aud1_tag:"Компании и туристы",aud1_h:"Вечер, которым можно наслаждаться",aud1_p:"Приватные караоке-залы, лучшие столы и тёплый приём в заведениях-партнёрах — с теми, кто действительно знает ночной Дананг.",aud1_cta:"Посмотреть вечера →",
+    aud2_tag:"Корпоративные и частные мероприятия",aud2_h:"Конфиденциально · Надёжно · Всё включено",aud2_p:"Приём клиентов, вечера для делегаций и встречи команды — организуем от и до, абсолютно конфиденциально.",aud2_cta:"Конфиденциальный запрос →",
+    fmt_eyebrow:"Что мы организуем",fmt_title:"Вечера",fmt_intro:"Каждый вечер создаётся под вас. Вот наши фирменные форматы — или расскажите нам, какую атмосферу вы хотите.",
+    f1_h:"VIP-караоке",f1_p:"Лучшие караоке-залы заведений-партнёров Дананга — топовый звук, полный бар и внимательный приём.",
+    f2_h:"Бутылочный сервис",f2_p:"Зарезервированные столы и бутылочный сервис в караоке и лучших клубах города.",
+    f3_h:"Ужин и ночь",f3_p:"Начните с ужина и продолжите вечером. От первого блюда до последней песни — без забот.",
+    f4_h:"Корпоративные мероприятия",f4_p:"Приём клиентов и вечера для делегаций — организовано, конфиденциально, один контакт.",
+    f5_h:"Трансфер",f5_p:"Трансфер от отеля до заведения и обратно, чтобы вся группа была вместе.",
+    f6_h:"Вечер на заказ",f6_p:"Есть особая идея? Расскажите о поводе, числе гостей и атмосфере — мы создадим вечер.",
+    how_eyebrow:"Типичный вечер",how_title:"Как это работает",how_intro:"Достаточно одного сообщения. Остальное мы сделаем ещё до вашего приезда.",
+    s1_h:"Расскажите нам",s1_p:"Сообщите число гостей, дату и желаемый формат вечера — через форму или удобный мессенджер.",
+    s2_h:"Мы планируем",s2_p:"Предлагаем подходящее заведение, зал и стол и заранее согласовываем каждую деталь.",
+    s3_h:"Вы приезжаете",s3_p:"Приватный зал готов, приветственные напитки налиты, персонал заведения встречает вашу группу.",
+    s4_h:"Вы наслаждаетесь",s4_p:"Пойте, поднимайте бокалы и отдыхайте минимум три часа. Мы на связи всю ночь, на всякий случай.",
+    inc1:"Приватный зал",inc2:"Приветственные напитки",inc3:"Минимум 3 часа",inc4:"Тёплый приём",inc5:"Под вашу группу",price_label:"От",price_pp:"с человека",price_desc:"Всё включено — приватный VIP-зал, приветственные напитки, минимум 3 часа и тёплый приём заведения. Без предоплаты.",
+    biz_eyebrow:"Для компаний",biz_title:"Корпоративные и частные мероприятия",biz_p:"Когда вы принимаете клиентов, партнёров или делегацию, вечер должен пройти безупречно и абсолютно конфиденциально. Именно этим мы занимаемся в Дананге уже шесть лет.",
+    biz_l1:"Полная конфиденциальность от начала до конца",biz_l2:"Организация от А до Я — заведение, столы, трансфер, тайминг",biz_l3:"Один контакт, доступный всю ночь",biz_l4:"Под делегации, приём клиентов и вечера команды",
+    biz_cta:"Конфиденциальный запрос",biz_quote:"Тактичность, надёжность и вечер, который ваши гости запомнят по правильным причинам.",
+    gal_eyebrow:"Атмосфера",gal_title:"Галерея",gal_intro:"Загляните в залы и заведения, с которыми мы работаем в Дананге.",gal_ph:"Фото — заведение-партнёр",gal_note:"Каждое заведение тщательно отобрано. Расскажите о вашем вкусе — мы подберём идеальный зал.",
+    ab_eyebrow:"Кто мы",ab_title:"Местные · Надёжные · На месте",ab_p1:"Мы живём и работаем в Дананге и за шесть лет выстроили настоящие отношения с лучшими заведениями города.",ab_p2:"Будь вы компанией друзей на отдыхе или фирмой, принимающей важных гостей, у вас будет один надёжный контакт, знающий ночной Дананг.",
+    ab_s1:"Лет в Дананге",ab_s2:"Заведений-партнёров",ab_s3:"Под заказ",ab_quote:"Шесть лет превращаем вечера в незабываемые воспоминания.",
+    ct_eyebrow:"Запланируйте ваш вечер",ct_title:"Расскажите о вашем вечере",ct_lead:"Отправьте несколько деталей, и мы ответим быстро — обычно в течение нескольких минут. Хотите написать? Свяжитесь по любому каналу ниже.",ct_reply:"Отвечаем за несколько минут, готовы вас обслужить.",
+    ct_wa:"Самый быстрый ответ · нажмите для чата",ct_tg:"Пишите в любое время",ct_kk:"Для корейских гостей",ct_line:"Популярно в Японии и Корее",ct_wc:"Для китайских гостей",qr_title:"Чат в KakaoTalk",qr_sub:"Отсканируйте QR-код камерой телефона или приложением.",qr_hint:"Nightlife in Da Nang",ct_mail:"Корпоративные запросы",
+    fm_title:"Запросите ваш вечер",fm_sub:"Без обязательств — просто расскажите, что вы хотите.",fm_name:"Имя",fm_people:"Размер группы",fm_date:"Желаемая дата",fm_type:"Какой вечер?",
+    fm_o1:"VIP-караоке",fm_o2:"Бутылочный сервис / столы",fm_o3:"Ужин и ночь",fm_o4:"Корпоратив / частное",fm_o5:"На заказ — опишу сам",
+    fm_channel:"Удобный способ связи",fm_contact:"Ваш номер / аккаунт / email",fm_msg:"Что-то ещё? (необязательно)",fm_submit:"Отправить запрос",fm_note:"Отправляя, вы соглашаетесь на связь по вашему запросу.",fm_reassure:"Без предоплаты — запрос бесплатный и ни к чему не обязывает.",fm_success:"✓ Спасибо! Ваш запрос принят. Мы скоро свяжемся с вами.",
+    ft_about:"Ночная жизнь Дананга для туристов и компаний. VIP-караоке, частные мероприятия и бутылочный сервис в лучших заведениях.",
+    ft_warn1:"🔞 Строго 18+. Во всех заведениях требуется документ.",ft_warn2:"Мы за ответственное употребление алкоголя.",
+    ft_explore:"Обзор",ft_contact:"Контакты",ft_wa:"WhatsApp",ft_privacy:"Политика конфиденциальности",
+  },
 };
 
 /* memorizza i testi inglesi originali la prima volta */
@@ -1267,8 +1322,9 @@ const LANG_META = {
   ko:{flag:'🇰🇷',label:'KO'},
   ja:{flag:'🇯🇵',label:'JA'},
   zh:{flag:'🇨🇳',label:'ZH'},
+  ru:{flag:'🇷🇺',label:'RU'},
 };
-const SUPPORTED = ['en','vi','ko','ja','zh'];
+const SUPPORTED = ['en','vi','ko','ja','zh','ru'];
 
 function setLang(lang){
   if(!SUPPORTED.includes(lang)) lang='en';
